@@ -10,11 +10,7 @@ import { ScrollView } from "react-native";
 const Explorepage = ({ activeTab, setActiveTab }: any) => {
   return (
     <>
-      <Box
-        className={`w-full ${activeTab !== "Profile" ? "flex" : "hidden"}`}
-      >
-        {/* top banner */}
-        <Banner />
+      <Box className={`w-full ${activeTab !== "Profile" ? "flex" : "hidden"}`}>
         {/* header */}
         <Header />
       </Box>
