@@ -9,11 +9,11 @@ const HeaderTabs = () => {
   const [selectedTab, setSelectedTab] = React.useState("Anywhere");
   return (
     <HStack className="h-20 items-center justify-between">
-      <HStack className="rounded-full p-1.5 items-center border border-border-light-200 dark:border-border-dark-900">
+      <HStack className="rounded-full p-1.5 items-center border border-outline-200 dark:border-outline-900">
         <Pressable
           className={`rounded-full px-3 py-1.5 ${
             selectedTab === "Anywhere" 
-              ? "bg-background-light-100 dark:bg-background-dark-700" 
+              ? "bg-background-100 dark:bg-background-700" 
               : "bg-transparent"
           }`}
           onPress={() => setSelectedTab("Anywhere")}
@@ -25,7 +25,7 @@ const HeaderTabs = () => {
         <Pressable
           className={`rounded-full px-3 py-1.5 ${
             selectedTab === "Anyweek" 
-              ? "bg-background-light-100 dark:bg-background-dark-700" 
+              ? "bg-background-100 dark:bg-background-700" 
               : "bg-transparent"
           }`}
           onPress={() => setSelectedTab("Anyweek")}
@@ -37,7 +37,7 @@ const HeaderTabs = () => {
         <Pressable
           className={`rounded-full px-3 py-1.5 ${
             selectedTab === "Add guests" 
-              ? "bg-background-light-100 dark:bg-background-dark-700" 
+              ? "bg-background-100 dark:bg-background-700" 
               : "bg-transparent"
           }`}
           onPress={() => setSelectedTab("Add guests")}

@@ -12,7 +12,6 @@ import {
 } from "lucide-react-native";
 import MobileProfilePage from "./MobileProfilePage";
 import Explorepage from "./ExplorePage";
-import MobileSidebarActionsheet from "./MobileSidebarActionsheet";
 
 const bottomTabs = [
   {
@@ -50,7 +49,7 @@ const HomestayPage = () => {
 
   return (
     <>
-      <Box className="flex-1 bg-white dark:bg-background-dark-950">
+      <Box className="flex-1 bg-white dark:bg-background-dark">
         <StatusBar />
 
         <Box className="flex-1">
@@ -61,7 +60,7 @@ const HomestayPage = () => {
           <MobileModeChangeButton />
         </Box>
         {/* mobile bottom tabs */}
-        <Box className="h-[72px] items-center w-full md:hidden border-t border-border-light-50 dark:border-border-dark-900">
+        <Box className="h-[72px] items-center w-full md:hidden border-t border-outline-50 dark:border-outline-900">
           <MobileBottomTabs
             activeTab={activeTab}
             setActiveTab={setActiveTab}

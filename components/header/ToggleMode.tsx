@@ -10,7 +10,7 @@ const ToggleMode = () => {
       <Icon
         as={colorMode === "dark" ? SunIcon : MoonIcon}
         size="xl"
-        className="text-background-light-700 dark:text-background-dark-300 fill-current"
+        className="text-background-700 dark:text-background-300 fill-current"
       />
     </Button>
   );

@@ -8,7 +8,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "nativewind";
 import { Slot } from "expo-router";
 import {
   Inter_400Regular,
@@ -68,7 +68,7 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   return (
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>

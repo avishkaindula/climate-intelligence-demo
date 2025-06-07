@@ -12,7 +12,7 @@ const Header = React.memo(() => {
   return (
     <Box>
       {/* big screen */}
-      <Box className="px-16 w-full border-b hidden md:flex border-border-light-100 dark:border-border-dark-900"
+      <Box className="px-16 w-full border-b hidden md:flex border-outline-100 dark:border-outline-900"
       >
         <HStack className="items-center justify-between mx-auto w-full">
           <HomestayLogo />
