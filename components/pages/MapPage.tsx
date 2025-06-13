@@ -1,17 +1,24 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native';
-import { Box } from '../ui/box';
-import { Text } from '../ui/text';
-import { Heading } from '../ui/heading';
-import { VStack } from '../ui/vstack';
-import { HStack } from '../ui/hstack';
-import { Icon } from '../ui/icon';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
-import { useLanguage } from '../i18n/LanguageContext';
-import { MapPin, Thermometer, Cloud, Wind, Droplets, Eye } from 'lucide-react-native';
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native";
+import { Box } from "../ui/box";
+import { Text } from "../ui/text";
+import { Heading } from "../ui/heading";
+import { VStack } from "../ui/vstack";
+import { HStack } from "../ui/hstack";
+import { Icon } from "../ui/icon";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
+import { Badge } from "../ui/badge";
+import { useLanguage } from "../i18n/LanguageContext";
+import {
+  MapPin,
+  Thermometer,
+  Cloud,
+  Wind,
+  Droplets,
+  Eye,
+} from "lucide-react-native";
 
 const MapPage = () => {
   const { t } = useLanguage();
@@ -24,7 +31,7 @@ const MapPage = () => {
       temperature: "28°C",
       humidity: "65%",
       windSpeed: "12 km/h",
-      status: "active"
+      status: "active",
     },
     {
       id: 2,
@@ -33,7 +40,7 @@ const MapPage = () => {
       temperature: "26°C",
       humidity: "70%",
       windSpeed: "8 km/h",
-      status: "active"
+      status: "active",
     },
     {
       id: 3,
@@ -42,12 +49,15 @@ const MapPage = () => {
       temperature: "31°C",
       humidity: "58%",
       windSpeed: "15 km/h",
-      status: "offline"
-    }
+      status: "offline",
+    },
   ];
 
   return (
-    <SafeAreaView style={{ flex: 1 }} className="bg-white dark:bg-background-950">
+    <SafeAreaView
+      style={{ flex: 1 }}
+      className="bg-white dark:bg-background-950"
+    >
       <ScrollView className="flex-1">
         <Box className="p-6">
           {/* Header */}
@@ -55,10 +65,16 @@ const MapPage = () => {
             <HStack className="items-center space-x-3">
               <Icon as={MapPin} size="xl" className="text-primary-500" />
               <VStack>
-                <Heading size="xl" className="text-typography-900 dark:text-typography-100">
-                  {t('map')}
+                <Heading
+                  size="xl"
+                  className="text-typography-900 dark:text-typography-100"
+                >
+                  {t("map")}
                 </Heading>
-                <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                <Text
+                  size="sm"
+                  className="text-typography-600 dark:text-typography-400"
+                >
                   Real-time climate data visualization
                 </Text>
               </VStack>
@@ -72,7 +88,10 @@ const MapPage = () => {
               <Text className="text-gray-600 dark:text-gray-400 text-center">
                 Interactive Climate Map
               </Text>
-              <Text size="sm" className="text-gray-500 dark:text-gray-500 text-center">
+              <Text
+                size="sm"
+                className="text-gray-500 dark:text-gray-500 text-center"
+              >
                 Tap to view detailed climate data
               </Text>
               <Button variant="outline" size="sm">
@@ -87,9 +106,12 @@ const MapPage = () => {
               <HStack className="justify-between items-center">
                 <VStack>
                   <Text className="font-semibold text-typography-900 dark:text-typography-100">
-                    {t('yourLocation')}
+                    {t("yourLocation")}
                   </Text>
-                  <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-400"
+                  >
                     São Paulo, Brazil
                   </Text>
                 </VStack>
@@ -101,7 +123,10 @@ const MapPage = () => {
               <HStack className="justify-between">
                 <VStack className="items-center">
                   <Icon as={Thermometer} size="md" className="text-red-500" />
-                  <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-400"
+                  >
                     Temperature
                   </Text>
                   <Text className="font-bold text-typography-900 dark:text-typography-100">
@@ -110,7 +135,10 @@ const MapPage = () => {
                 </VStack>
                 <VStack className="items-center">
                   <Icon as={Droplets} size="md" className="text-blue-500" />
-                  <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-400"
+                  >
                     Humidity
                   </Text>
                   <Text className="font-bold text-typography-900 dark:text-typography-100">
@@ -119,7 +147,10 @@ const MapPage = () => {
                 </VStack>
                 <VStack className="items-center">
                   <Icon as={Wind} size="md" className="text-gray-500" />
-                  <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-400"
+                  >
                     Wind
                   </Text>
                   <Text className="font-bold text-typography-900 dark:text-typography-100">
@@ -128,7 +159,10 @@ const MapPage = () => {
                 </VStack>
                 <VStack className="items-center">
                   <Icon as={Eye} size="md" className="text-purple-500" />
-                  <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-400"
+                  >
                     Visibility
                   </Text>
                   <Text className="font-bold text-typography-900 dark:text-typography-100">
@@ -141,10 +175,13 @@ const MapPage = () => {
 
           {/* Nearby Stations */}
           <VStack className="space-y-4 mb-6">
-            <Heading size="md" className="text-typography-900 dark:text-typography-100">
-              {t('nearbyStations')}
+            <Heading
+              size="md"
+              className="text-typography-900 dark:text-typography-100"
+            >
+              {t("nearbyStations")}
             </Heading>
-            
+
             {climateStations.map((station) => (
               <Card key={station.id} className="p-4">
                 <VStack className="space-y-3">
@@ -153,28 +190,39 @@ const MapPage = () => {
                       <Text className="font-semibold text-typography-900 dark:text-typography-100">
                         {station.name}
                       </Text>
-                      <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                      <Text
+                        size="sm"
+                        className="text-typography-600 dark:text-typography-400"
+                      >
                         {station.distance} away
                       </Text>
                     </VStack>
-                    <Badge 
-                      variant="solid" 
-                      action={station.status === 'active' ? 'success' : 'error'}
+                    <Badge
+                      variant="solid"
+                      action={station.status === "active" ? "success" : "error"}
                     >
                       <Text size="xs">{station.status}</Text>
                     </Badge>
                   </HStack>
 
-                  {station.status === 'active' && (
+                  {station.status === "active" && (
                     <HStack className="justify-between">
                       <VStack className="items-center">
-                        <Icon as={Thermometer} size="sm" className="text-red-500" />
+                        <Icon
+                          as={Thermometer}
+                          size="sm"
+                          className="text-red-500"
+                        />
                         <Text size="xs" className="text-typography-500">
                           {station.temperature}
                         </Text>
                       </VStack>
                       <VStack className="items-center">
-                        <Icon as={Droplets} size="sm" className="text-blue-500" />
+                        <Icon
+                          as={Droplets}
+                          size="sm"
+                          className="text-blue-500"
+                        />
                         <Text size="xs" className="text-typography-500">
                           {station.humidity}
                         </Text>
@@ -205,7 +253,8 @@ const MapPage = () => {
                 </Text>
               </HStack>
               <Text size="sm" className="text-green-800 dark:text-green-200">
-                Help improve climate monitoring by sharing observations from your location
+                Help improve climate monitoring by sharing observations from
+                your location
               </Text>
               <Button size="sm" variant="solid" className="bg-green-600">
                 <Text className="text-white">Add Reading</Text>

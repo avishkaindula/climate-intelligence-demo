@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native';
-import { Box } from '../ui/box';
-import { Text } from '../ui/text';
-import { Heading } from '../ui/heading';
-import { VStack } from '../ui/vstack';
-import { HStack } from '../ui/hstack';
-import { Icon } from '../ui/icon';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Avatar, AvatarImage, AvatarFallbackText } from '../ui/avatar';
-import { Badge } from '../ui/badge';
-import { Divider } from '../ui/divider';
-import { useLanguage } from '../i18n/LanguageContext';
-import LanguageSettings from '../settings/LanguageSettings';
-import { User, Award, Target, BarChart3, Settings, Globe, Bell, Shield } from 'lucide-react-native';
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native";
+import { Box } from "../ui/box";
+import { Text } from "../ui/text";
+import { Heading } from "../ui/heading";
+import { VStack } from "../ui/vstack";
+import { HStack } from "../ui/hstack";
+import { Icon } from "../ui/icon";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
+import { Avatar, AvatarImage, AvatarFallbackText } from "../ui/avatar";
+import { Badge } from "../ui/badge";
+import { Divider } from "../ui/divider";
+import { useLanguage } from "../i18n/LanguageContext";
+import LanguageSettings from "../settings/LanguageSettings";
+import {
+  User,
+  Award,
+  Target,
+  BarChart3,
+  Settings,
+  Globe,
+  Bell,
+  Shield,
+} from "lucide-react-native";
 
 const ProfilePage = () => {
   const { t, currentLanguage } = useLanguage();
@@ -22,29 +31,56 @@ const ProfilePage = () => {
 
   const getCurrentLanguageName = () => {
     const languageNames = {
-      en: 'English',
-      es: 'Español', 
-      pt: 'Português'
+      en: "English",
+      es: "Español",
+      pt: "Português",
     };
-    return languageNames[currentLanguage] || 'English';
+    return languageNames[currentLanguage] || "English";
   };
 
   const achievements = [
-    { id: 1, title: "Data Pioneer", description: "First 100 data points", icon: BarChart3, earned: true },
-    { id: 2, title: "Community Leader", description: "Started 5 discussions", icon: User, earned: true },
-    { id: 3, title: "Mission Master", description: "Completed 10 missions", icon: Target, earned: false },
-    { id: 4, title: "Climate Champion", description: "1 year of participation", icon: Award, earned: false }
+    {
+      id: 1,
+      title: "Data Pioneer",
+      description: "First 100 data points",
+      icon: BarChart3,
+      earned: true,
+    },
+    {
+      id: 2,
+      title: "Community Leader",
+      description: "Started 5 discussions",
+      icon: User,
+      earned: true,
+    },
+    {
+      id: 3,
+      title: "Mission Master",
+      description: "Completed 10 missions",
+      icon: Target,
+      earned: false,
+    },
+    {
+      id: 4,
+      title: "Climate Champion",
+      description: "1 year of participation",
+      icon: Award,
+      earned: false,
+    },
   ];
 
   const stats = [
     { label: "Missions Completed", value: "12", color: "text-green-600" },
     { label: "Data Points Contributed", value: "245", color: "text-blue-600" },
     { label: "Community Contributions", value: "8", color: "text-purple-600" },
-    { label: "Points Earned", value: "850", color: "text-orange-600" }
+    { label: "Points Earned", value: "850", color: "text-orange-600" },
   ];
 
   return (
-    <SafeAreaView style={{ flex: 1 }} className="bg-white dark:bg-background-950">
+    <SafeAreaView
+      style={{ flex: 1 }}
+      className="bg-white dark:bg-background-950"
+    >
       <ScrollView className="flex-1">
         <Box className="p-6">
           {/* Header */}
@@ -52,10 +88,16 @@ const ProfilePage = () => {
             <HStack className="items-center space-x-3">
               <Icon as={User} size="xl" className="text-primary-500" />
               <VStack>
-                <Heading size="xl" className="text-typography-900 dark:text-typography-100">
-                  {t('profile')}
+                <Heading
+                  size="xl"
+                  className="text-typography-900 dark:text-typography-100"
+                >
+                  {t("profile")}
                 </Heading>
-                <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                <Text
+                  size="sm"
+                  className="text-typography-600 dark:text-typography-400"
+                >
                   Your climate action journey
                 </Text>
               </VStack>
@@ -67,19 +109,27 @@ const ProfilePage = () => {
             <VStack className="space-y-4">
               <HStack className="items-center space-x-4">
                 <Avatar size="xl">
-                  <AvatarImage source={{ 
-                    uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
-                  }} />
+                  <AvatarImage
+                    source={{
+                      uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+                    }}
+                  />
                   <AvatarFallbackText>Carlos Mendoza</AvatarFallbackText>
                 </Avatar>
                 <VStack className="flex-1">
-                  <Heading size="lg" className="text-typography-900 dark:text-typography-100">
+                  <Heading
+                    size="lg"
+                    className="text-typography-900 dark:text-typography-100"
+                  >
                     Carlos Mendoza
                   </Heading>
                   <Text className="text-typography-600 dark:text-typography-400">
                     Environmental Scientist
                   </Text>
-                  <Text size="sm" className="text-typography-500 dark:text-typography-500">
+                  <Text
+                    size="sm"
+                    className="text-typography-500 dark:text-typography-500"
+                  >
                     São Paulo, Brazil
                   </Text>
                   <HStack className="items-center space-x-2 mt-2">
@@ -93,7 +143,7 @@ const ProfilePage = () => {
                 </VStack>
               </HStack>
               <Button variant="outline">
-                <Text>{t('editProfile')}</Text>
+                <Text>{t("editProfile")}</Text>
               </Button>
             </VStack>
           </Card>
@@ -101,8 +151,11 @@ const ProfilePage = () => {
           {/* Stats */}
           <Card className="p-6 mb-6">
             <VStack className="space-y-4">
-              <Heading size="md" className="text-typography-900 dark:text-typography-100">
-                {t('contributions')}
+              <Heading
+                size="md"
+                className="text-typography-900 dark:text-typography-100"
+              >
+                {t("contributions")}
               </Heading>
               <VStack className="space-y-3">
                 {stats.map((stat, index) => (
@@ -110,7 +163,11 @@ const ProfilePage = () => {
                     <Text className="text-typography-600 dark:text-typography-400">
                       {stat.label}
                     </Text>
-                    <Text className={`font-bold ${stat.color} dark:${stat.color.replace('text-', 'text-')}`}>
+                    <Text
+                      className={`font-bold ${
+                        stat.color
+                      } dark:${stat.color.replace("text-", "text-")}`}
+                    >
                       {stat.value}
                     </Text>
                   </HStack>
@@ -122,24 +179,49 @@ const ProfilePage = () => {
           {/* Achievements */}
           <Card className="p-6 mb-6">
             <VStack className="space-y-4">
-              <Heading size="md" className="text-typography-900 dark:text-typography-100">
-                {t('achievements')}
+              <Heading
+                size="md"
+                className="text-typography-900 dark:text-typography-100"
+              >
+                {t("achievements")}
               </Heading>
               <VStack className="space-y-3">
                 {achievements.map((achievement) => (
-                  <HStack key={achievement.id} className="items-center space-x-3">
-                    <Box className={`p-2 rounded-full ${achievement.earned ? 'bg-green-100 dark:bg-green-900/30' : 'bg-gray-100 dark:bg-gray-800'}`}>
-                      <Icon 
-                        as={achievement.icon} 
-                        size="md" 
-                        className={achievement.earned ? 'text-green-600 dark:text-green-400' : 'text-gray-400'}
+                  <HStack
+                    key={achievement.id}
+                    className="items-center space-x-3"
+                  >
+                    <Box
+                      className={`p-2 rounded-full ${
+                        achievement.earned
+                          ? "bg-green-100 dark:bg-green-900/30"
+                          : "bg-gray-100 dark:bg-gray-800"
+                      }`}
+                    >
+                      <Icon
+                        as={achievement.icon}
+                        size="md"
+                        className={
+                          achievement.earned
+                            ? "text-green-600 dark:text-green-400"
+                            : "text-gray-400"
+                        }
                       />
                     </Box>
                     <VStack className="flex-1">
-                      <Text className={`font-semibold ${achievement.earned ? 'text-typography-900 dark:text-typography-100' : 'text-typography-500 dark:text-typography-500'}`}>
+                      <Text
+                        className={`font-semibold ${
+                          achievement.earned
+                            ? "text-typography-900 dark:text-typography-100"
+                            : "text-typography-500 dark:text-typography-500"
+                        }`}
+                      >
                         {achievement.title}
                       </Text>
-                      <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                      <Text
+                        size="sm"
+                        className="text-typography-600 dark:text-typography-400"
+                      >
                         {achievement.description}
                       </Text>
                     </VStack>
@@ -157,7 +239,10 @@ const ProfilePage = () => {
           {/* Recent Activity */}
           <Card className="p-6 mb-6">
             <VStack className="space-y-4">
-              <Heading size="md" className="text-typography-900 dark:text-typography-100">
+              <Heading
+                size="md"
+                className="text-typography-900 dark:text-typography-100"
+              >
                 Recent Activity
               </Heading>
               <VStack className="space-y-3">
@@ -167,7 +252,10 @@ const ProfilePage = () => {
                     <Text className="text-typography-900 dark:text-typography-100">
                       Completed Temperature Monitoring Mission
                     </Text>
-                    <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                    <Text
+                      size="sm"
+                      className="text-typography-600 dark:text-typography-400"
+                    >
                       2 days ago
                     </Text>
                   </VStack>
@@ -178,7 +266,10 @@ const ProfilePage = () => {
                     <Text className="text-typography-900 dark:text-typography-100">
                       Contributed 15 data points
                     </Text>
-                    <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                    <Text
+                      size="sm"
+                      className="text-typography-600 dark:text-typography-400"
+                    >
                       1 week ago
                     </Text>
                   </VStack>
@@ -189,7 +280,10 @@ const ProfilePage = () => {
                     <Text className="text-typography-900 dark:text-typography-100">
                       Started community discussion
                     </Text>
-                    <Text size="sm" className="text-typography-600 dark:text-typography-400">
+                    <Text
+                      size="sm"
+                      className="text-typography-600 dark:text-typography-400"
+                    >
                       2 weeks ago
                     </Text>
                   </VStack>
@@ -201,61 +295,76 @@ const ProfilePage = () => {
           {/* Settings */}
           <Card className="p-6">
             <VStack className="space-y-4">
-              <Heading size="md" className="text-typography-900 dark:text-typography-100">
-                {t('settings')}
+              <Heading
+                size="md"
+                className="text-typography-900 dark:text-typography-100"
+              >
+                {t("settings")}
               </Heading>
               <VStack className="space-y-3">
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
-                    <Icon as={Globe} size="md" className="text-typography-500" />
+                    <Icon
+                      as={Globe}
+                      size="md"
+                      className="text-typography-500"
+                    />
                     <Text className="text-typography-900 dark:text-typography-100">
-                      {t('language')}
+                      {t("language")}
                     </Text>
                   </HStack>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     variant="outline"
                     onPress={() => setShowLanguageModal(true)}
                   >
                     <Text>{getCurrentLanguageName()}</Text>
                   </Button>
                 </HStack>
-                
+
                 <Divider className="my-2" />
-                
+
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
                     <Icon as={Bell} size="md" className="text-typography-500" />
                     <Text className="text-typography-900 dark:text-typography-100">
-                      {t('notifications')}
+                      {t("notifications")}
                     </Text>
                   </HStack>
                   <Button size="sm" variant="outline">
                     <Text>Manage</Text>
                   </Button>
                 </HStack>
-                
+
                 <Divider className="my-2" />
-                
+
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
-                    <Icon as={Shield} size="md" className="text-typography-500" />
+                    <Icon
+                      as={Shield}
+                      size="md"
+                      className="text-typography-500"
+                    />
                     <Text className="text-typography-900 dark:text-typography-100">
-                      {t('privacy')}
+                      {t("privacy")}
                     </Text>
                   </HStack>
                   <Button size="sm" variant="outline">
                     <Text>Settings</Text>
                   </Button>
                 </HStack>
-                
+
                 <Divider className="my-2" />
-                
+
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
-                    <Icon as={Settings} size="md" className="text-typography-500" />
+                    <Icon
+                      as={Settings}
+                      size="md"
+                      className="text-typography-500"
+                    />
                     <Text className="text-typography-900 dark:text-typography-100">
-                      {t('about')}
+                      {t("about")}
                     </Text>
                   </HStack>
                   <Button size="sm" variant="outline">
