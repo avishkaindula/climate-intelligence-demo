@@ -12,7 +12,8 @@ import {
   Inter_900Black,
 } from "@expo-google-fonts/inter";
 import { LanguageProvider } from "@/components/i18n/LanguageContext";
-import React from "react";
+
+import "../global.css";
 
 export {
   // Catch any errors thrown by the Layout component.
