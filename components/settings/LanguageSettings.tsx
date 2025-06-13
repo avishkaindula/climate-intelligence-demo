@@ -1,14 +1,17 @@
 import React from "react";
 import { Pressable } from "react-native";
-import { VStack } from "../ui/vstack";
-import { HStack } from "../ui/hstack";
-import { Text } from "../ui/text";
-import { Heading } from "../ui/heading";
-import { Pressable as UIPressable } from "../ui/pressable";
-import { Icon } from "../ui/icon";
-import { Card } from "../ui/card";
-import { Box } from "../ui/box";
-import { useLanguage, availableLanguages } from "../i18n/LanguageContext";
+import { VStack } from "@/components/ui/vstack";
+import { HStack } from "@/components/ui/hstack";
+import { Text } from "@/components/ui/text";
+import { Heading } from "@/components/ui/heading";
+import { Pressable as UIPressable } from "@/components/ui/pressable";
+import { Icon } from "@/components/ui/icon";
+import { Card } from "@/components/ui/card";
+import { Box } from "@/components/ui/box";
+import {
+  useLanguage,
+  availableLanguages,
+} from "@/components/i18n/LanguageContext";
 import { Check, X } from "lucide-react-native";
 
 interface LanguageSettingsProps {

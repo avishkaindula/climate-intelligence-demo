@@ -4,7 +4,6 @@ import { Home, Target, Map, Users, User } from "lucide-react-native";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
-import { Colors } from "@/constants/Colors";
 import TabBarBackground from "@/components/TabBarBackground";
 
 function TabBarIcon({
