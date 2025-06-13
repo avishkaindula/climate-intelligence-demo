@@ -103,7 +103,7 @@ const ProfilePage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Your climate action journey
                 </Text>
@@ -130,7 +130,7 @@ const ProfilePage = () => {
                   >
                     Carlos Mendoza
                   </Heading>
-                  <Text className="text-typography-600 dark:text-typography-200">
+                  <Text className="text-typography-600 dark:text-typography-750">
                     Environmental Scientist
                   </Text>
                   <Text
@@ -167,7 +167,7 @@ const ProfilePage = () => {
               <VStack space="md">
                 {stats.map((stat, index) => (
                   <HStack key={index} className="justify-between items-center">
-                    <Text className="text-typography-600 dark:text-typography-200">
+                    <Text className="text-typography-600 dark:text-typography-750">
                       {stat.label}
                     </Text>
                     <Text
@@ -228,7 +228,7 @@ const ProfilePage = () => {
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {achievement.description}
                       </Text>
@@ -262,7 +262,7 @@ const ProfilePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       2 days ago
                     </Text>
@@ -276,7 +276,7 @@ const ProfilePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       1 week ago
                     </Text>
@@ -290,7 +290,7 @@ const ProfilePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       2 weeks ago
                     </Text>
@@ -334,7 +334,7 @@ const ProfilePage = () => {
                       />
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {colorScheme === "dark" ? "Light Mode" : "Dark Mode"}
                       </Text>

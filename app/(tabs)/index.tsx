@@ -35,7 +35,7 @@ const HomePage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   {t("empoweringClimateAction")}
                 </Text>
@@ -52,7 +52,7 @@ const HomePage = () => {
               >
                 {t("homeWelcome")}
               </Heading>
-              <Text className="text-typography-700 dark:text-typography-200">
+              <Text className="text-typography-700 dark:text-typography-750">
                 {t("homeDescription")}
               </Text>
             </VStack>
@@ -83,7 +83,7 @@ const HomePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       Contribute to ongoing climate research
                     </Text>
@@ -109,7 +109,7 @@ const HomePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       Share observations from your area
                     </Text>
@@ -135,7 +135,7 @@ const HomePage = () => {
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-200"
+                      className="text-typography-600 dark:text-typography-750"
                     >
                       Engage with fellow climate advocates
                     </Text>
@@ -164,7 +164,7 @@ const HomePage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   You contributed to collecting 15 temperature readings this
                   week
@@ -185,7 +185,7 @@ const HomePage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   "Sustainable farming practices in drought conditions"
                 </Text>

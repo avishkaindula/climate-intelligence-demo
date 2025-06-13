@@ -73,7 +73,7 @@ const MapPage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Real-time climate data visualization
                 </Text>
@@ -110,7 +110,7 @@ const MapPage = () => {
                   </Text>
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-200"
+                    className="text-typography-600 dark:text-typography-750"
                   >
                     São Paulo, Brazil
                   </Text>
@@ -125,7 +125,7 @@ const MapPage = () => {
                   <Icon as={Thermometer} size="md" className="text-red-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-200"
+                    className="text-typography-600 dark:text-typography-750"
                   >
                     Temperature
                   </Text>
@@ -137,7 +137,7 @@ const MapPage = () => {
                   <Icon as={Droplets} size="md" className="text-blue-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-200"
+                    className="text-typography-600 dark:text-typography-750"
                   >
                     Humidity
                   </Text>
@@ -149,7 +149,7 @@ const MapPage = () => {
                   <Icon as={Wind} size="md" className="text-gray-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-200"
+                    className="text-typography-600 dark:text-typography-750"
                   >
                     Wind
                   </Text>
@@ -161,7 +161,7 @@ const MapPage = () => {
                   <Icon as={Eye} size="md" className="text-purple-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-200"
+                    className="text-typography-600 dark:text-typography-750"
                   >
                     Visibility
                   </Text>
@@ -192,7 +192,7 @@ const MapPage = () => {
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {station.distance} away
                       </Text>

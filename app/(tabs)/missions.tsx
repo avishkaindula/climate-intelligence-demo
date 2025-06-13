@@ -83,7 +83,7 @@ const MissionsPage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Contribute to climate research and action
                 </Text>

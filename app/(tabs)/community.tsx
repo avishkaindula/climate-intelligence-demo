@@ -102,7 +102,7 @@ const CommunityPage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Connect, learn, and act together
                 </Text>
@@ -122,7 +122,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Members
                 </Text>
@@ -136,7 +136,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   {t("discussions")}
                 </Text>
@@ -150,7 +150,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   {t("events")}
                 </Text>
@@ -196,7 +196,7 @@ const CommunityPage = () => {
                     <VStack className="flex-1">
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {discussion.author}
                       </Text>
@@ -227,7 +227,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-200"
+                          className="text-typography-600 dark:text-typography-750"
                         >
                           {discussion.replies}
                         </Text>
@@ -240,7 +240,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-200"
+                          className="text-typography-600 dark:text-typography-750"
                         >
                           {discussion.likes}
                         </Text>
@@ -274,7 +274,7 @@ const CommunityPage = () => {
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {event.date} at {event.time}
                       </Text>
@@ -296,7 +296,7 @@ const CommunityPage = () => {
                       />
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-200"
+                        className="text-typography-600 dark:text-typography-750"
                       >
                         {event.participants} attending
                       </Text>
@@ -332,7 +332,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-200"
+                  className="text-typography-600 dark:text-typography-750"
                 >
                   Learn how residents of Vila Verde implemented an early warning
                   system and natural flood management...
