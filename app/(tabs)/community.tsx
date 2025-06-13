@@ -96,13 +96,13 @@ const CommunityPage = () => {
               <VStack>
                 <Heading
                   size="xl"
-                  className="text-typography-900 dark:text-typography-100"
+                  className="text-typography-900 dark:text-typography-950"
                 >
                   {t("community")}
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Connect, learn, and act together
                 </Text>
@@ -122,7 +122,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Members
                 </Text>
@@ -136,7 +136,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   {t("discussions")}
                 </Text>
@@ -150,7 +150,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   {t("events")}
                 </Text>
@@ -174,7 +174,7 @@ const CommunityPage = () => {
           <VStack className="space-y-4 mb-6">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               Recent {t("discussions")}
             </Heading>
@@ -182,7 +182,7 @@ const CommunityPage = () => {
             {discussions.map((discussion) => (
               <Card key={discussion.id} className="p-4">
                 <VStack className="space-y-3">
-                  <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
                     {discussion.title}
                   </Text>
 
@@ -196,7 +196,7 @@ const CommunityPage = () => {
                     <VStack className="flex-1">
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {discussion.author}
                       </Text>
@@ -227,7 +227,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-400"
+                          className="text-typography-600 dark:text-typography-300"
                         >
                           {discussion.replies}
                         </Text>
@@ -240,7 +240,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-400"
+                          className="text-typography-600 dark:text-typography-300"
                         >
                           {discussion.likes}
                         </Text>
@@ -259,7 +259,7 @@ const CommunityPage = () => {
           <VStack className="space-y-4 mb-6">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               Upcoming {t("events")}
             </Heading>
@@ -269,12 +269,12 @@ const CommunityPage = () => {
                 <VStack className="space-y-3">
                   <HStack className="justify-between items-start">
                     <VStack className="flex-1">
-                      <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                      <Text className="font-semibold text-typography-900 dark:text-typography-950">
                         {event.title}
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {event.date} at {event.time}
                       </Text>
@@ -296,7 +296,7 @@ const CommunityPage = () => {
                       />
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {event.participants} attending
                       </Text>
@@ -314,7 +314,7 @@ const CommunityPage = () => {
           <VStack className="space-y-4">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               Community {t("stories")}
             </Heading>
@@ -323,16 +323,16 @@ const CommunityPage = () => {
               <VStack className="space-y-3">
                 <HStack className="items-center space-x-2">
                   <Icon as={BookOpen} size="md" className="text-blue-500" />
-                  <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
                     Featured Story
                   </Text>
                 </HStack>
-                <Text className="text-typography-900 dark:text-typography-100">
+                <Text className="text-typography-900 dark:text-typography-950">
                   "How our community reduced flood risk by 40%"
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Learn how residents of Vila Verde implemented an early warning
                   system and natural flood management...

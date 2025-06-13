@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Home, Target, Map, Users, User } from "lucide-react-native";
 import { Platform } from "react-native";
+import { useColorScheme } from "nativewind";
 
 import { HapticTab } from "@/components/HapticTab";
 import TabBarBackground from "@/components/TabBarBackground";
@@ -17,21 +18,28 @@ function TabBarIcon({
 }
 
 export default function TabLayout() {
+  const { colorScheme } = useColorScheme();
+  
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#059669", // green-600
-        tabBarInactiveTintColor: "#6b7280", // gray-500
+        tabBarInactiveTintColor: colorScheme === "dark" ? "#9CA3AF" : "#6B7280", // gray-400 for dark, gray-500 for light
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: "absolute",
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          backgroundColor: colorScheme === "dark" ? "#1F2937" : "#FFFFFF", // gray-800 for dark, white for light
+          borderTopColor: colorScheme === "dark" ? "#374151" : "#E5E7EB", // gray-700 for dark, gray-200 for light
+          borderTopWidth: 1,
+          ...Platform.select({
+            ios: {
+              // Use a transparent background on iOS to show the blur effect
+              position: "absolute",
+            },
+            default: {},
+          }),
+        },
       }}
     >
       <Tabs.Screen

@@ -77,13 +77,13 @@ const MissionsPage = () => {
               <VStack>
                 <Heading
                   size="xl"
-                  className="text-typography-900 dark:text-typography-100"
+                  className="text-typography-900 dark:text-typography-950"
                 >
                   {t("missions")}
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Contribute to climate research and action
                 </Text>
@@ -103,7 +103,7 @@ const MissionsPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Completed
                 </Text>
@@ -117,7 +117,7 @@ const MissionsPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Active
                 </Text>
@@ -131,7 +131,7 @@ const MissionsPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Points Earned
                 </Text>
@@ -143,7 +143,7 @@ const MissionsPage = () => {
           <VStack className="space-y-4 mb-6">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               {t("activeMissions")}
             </Heading>
@@ -153,12 +153,12 @@ const MissionsPage = () => {
                 <VStack className="space-y-4">
                   <HStack className="justify-between items-start">
                     <VStack className="flex-1 space-y-2">
-                      <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                      <Text className="font-semibold text-typography-900 dark:text-typography-950">
                         {mission.title}
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {mission.description}
                       </Text>
@@ -176,13 +176,13 @@ const MissionsPage = () => {
                     <HStack className="justify-between">
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         Progress
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {mission.progress}%
                       </Text>
@@ -200,7 +200,7 @@ const MissionsPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-400"
+                          className="text-typography-600 dark:text-typography-300"
                         >
                           {mission.participants}
                         </Text>
@@ -213,7 +213,7 @@ const MissionsPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-400"
+                          className="text-typography-600 dark:text-typography-300"
                         >
                           {mission.deadline}
                         </Text>
@@ -226,7 +226,7 @@ const MissionsPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-400"
+                          className="text-typography-600 dark:text-typography-300"
                         >
                           {mission.reward}
                         </Text>
@@ -245,7 +245,7 @@ const MissionsPage = () => {
           <VStack className="space-y-4">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               {t("completedMissions")}
             </Heading>
@@ -253,12 +253,12 @@ const MissionsPage = () => {
             <Card className="p-4">
               <HStack className="justify-between items-center">
                 <VStack>
-                  <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
                     Rainfall Pattern Documentation
                   </Text>
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Completed 1 week ago
                   </Text>
@@ -272,12 +272,12 @@ const MissionsPage = () => {
             <Card className="p-4">
               <HStack className="justify-between items-center">
                 <VStack>
-                  <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
                     Wildlife Migration Tracking
                   </Text>
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Completed 2 weeks ago
                   </Text>

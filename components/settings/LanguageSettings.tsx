@@ -34,7 +34,7 @@ const LanguageSettings: React.FC<LanguageSettingsProps> = ({ onClose }) => {
           <HStack className="justify-between items-center">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               Select Language
             </Heading>
@@ -52,12 +52,12 @@ const LanguageSettings: React.FC<LanguageSettingsProps> = ({ onClose }) => {
               >
                 <HStack className="justify-between items-center">
                   <VStack>
-                    <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                    <Text className="font-semibold text-typography-900 dark:text-typography-950">
                       {language.nativeName}
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-400"
+                      className="text-typography-600 dark:text-typography-300"
                     >
                       {language.name}
                     </Text>

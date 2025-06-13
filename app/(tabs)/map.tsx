@@ -67,13 +67,13 @@ const MapPage = () => {
               <VStack>
                 <Heading
                   size="xl"
-                  className="text-typography-900 dark:text-typography-100"
+                  className="text-typography-900 dark:text-typography-950"
                 >
                   {t("map")}
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Real-time climate data visualization
                 </Text>
@@ -105,12 +105,12 @@ const MapPage = () => {
             <VStack className="space-y-4">
               <HStack className="justify-between items-center">
                 <VStack>
-                  <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
                     {t("yourLocation")}
                   </Text>
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     São Paulo, Brazil
                   </Text>
@@ -125,11 +125,11 @@ const MapPage = () => {
                   <Icon as={Thermometer} size="md" className="text-red-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Temperature
                   </Text>
-                  <Text className="font-bold text-typography-900 dark:text-typography-100">
+                  <Text className="font-bold text-typography-900 dark:text-typography-950">
                     27°C
                   </Text>
                 </VStack>
@@ -137,11 +137,11 @@ const MapPage = () => {
                   <Icon as={Droplets} size="md" className="text-blue-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Humidity
                   </Text>
-                  <Text className="font-bold text-typography-900 dark:text-typography-100">
+                  <Text className="font-bold text-typography-900 dark:text-typography-950">
                     68%
                   </Text>
                 </VStack>
@@ -149,11 +149,11 @@ const MapPage = () => {
                   <Icon as={Wind} size="md" className="text-gray-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Wind
                   </Text>
-                  <Text className="font-bold text-typography-900 dark:text-typography-100">
+                  <Text className="font-bold text-typography-900 dark:text-typography-950">
                     10 km/h
                   </Text>
                 </VStack>
@@ -161,11 +161,11 @@ const MapPage = () => {
                   <Icon as={Eye} size="md" className="text-purple-500" />
                   <Text
                     size="sm"
-                    className="text-typography-600 dark:text-typography-400"
+                    className="text-typography-600 dark:text-typography-300"
                   >
                     Visibility
                   </Text>
-                  <Text className="font-bold text-typography-900 dark:text-typography-100">
+                  <Text className="font-bold text-typography-900 dark:text-typography-950">
                     12 km
                   </Text>
                 </VStack>
@@ -177,7 +177,7 @@ const MapPage = () => {
           <VStack className="space-y-4 mb-6">
             <Heading
               size="md"
-              className="text-typography-900 dark:text-typography-100"
+              className="text-typography-900 dark:text-typography-950"
             >
               {t("nearbyStations")}
             </Heading>
@@ -187,12 +187,12 @@ const MapPage = () => {
                 <VStack className="space-y-3">
                   <HStack className="justify-between items-start">
                     <VStack className="flex-1">
-                      <Text className="font-semibold text-typography-900 dark:text-typography-100">
+                      <Text className="font-semibold text-typography-900 dark:text-typography-950">
                         {station.name}
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {station.distance} away
                       </Text>

@@ -98,13 +98,13 @@ const ProfilePage = () => {
               <VStack>
                 <Heading
                   size="xl"
-                  className="text-typography-900 dark:text-typography-100"
+                  className="text-typography-900 dark:text-typography-950"
                 >
                   {t("profile")}
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-400"
+                  className="text-typography-600 dark:text-typography-300"
                 >
                   Your climate action journey
                 </Text>
@@ -127,16 +127,16 @@ const ProfilePage = () => {
                 <VStack className="flex-1">
                   <Heading
                     size="lg"
-                    className="text-typography-900 dark:text-typography-100"
+                    className="text-typography-900 dark:text-typography-950"
                   >
                     Carlos Mendoza
                   </Heading>
-                  <Text className="text-typography-600 dark:text-typography-400">
+                  <Text className="text-typography-600 dark:text-typography-300">
                     Environmental Scientist
                   </Text>
                   <Text
                     size="sm"
-                    className="text-typography-500 dark:text-typography-500"
+                    className="text-typography-500 dark:text-typography-400"
                   >
                     São Paulo, Brazil
                   </Text>
@@ -161,14 +161,14 @@ const ProfilePage = () => {
             <VStack className="space-y-4">
               <Heading
                 size="md"
-                className="text-typography-900 dark:text-typography-100"
+                className="text-typography-900 dark:text-typography-950"
               >
                 {t("contributions")}
               </Heading>
               <VStack className="space-y-3">
                 {stats.map((stat, index) => (
                   <HStack key={index} className="justify-between items-center">
-                    <Text className="text-typography-600 dark:text-typography-400">
+                    <Text className="text-typography-600 dark:text-typography-300">
                       {stat.label}
                     </Text>
                     <Text
@@ -189,7 +189,7 @@ const ProfilePage = () => {
             <VStack className="space-y-4">
               <Heading
                 size="md"
-                className="text-typography-900 dark:text-typography-100"
+                className="text-typography-900 dark:text-typography-950"
               >
                 {t("achievements")}
               </Heading>
@@ -220,7 +220,7 @@ const ProfilePage = () => {
                       <Text
                         className={`font-semibold ${
                           achievement.earned
-                            ? "text-typography-900 dark:text-typography-100"
+                            ? "text-typography-900 dark:text-typography-950"
                             : "text-typography-500 dark:text-typography-500"
                         }`}
                       >
@@ -228,7 +228,7 @@ const ProfilePage = () => {
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {achievement.description}
                       </Text>
@@ -249,7 +249,7 @@ const ProfilePage = () => {
             <VStack className="space-y-4">
               <Heading
                 size="md"
-                className="text-typography-900 dark:text-typography-100"
+                className="text-typography-900 dark:text-typography-950"
               >
                 Recent Activity
               </Heading>
@@ -257,12 +257,12 @@ const ProfilePage = () => {
                 <HStack className="items-center space-x-3">
                   <Box className="w-2 h-2 bg-green-500 rounded-full" />
                   <VStack className="flex-1">
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       Completed Temperature Monitoring Mission
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-400"
+                      className="text-typography-600 dark:text-typography-300"
                     >
                       2 days ago
                     </Text>
@@ -271,12 +271,12 @@ const ProfilePage = () => {
                 <HStack className="items-center space-x-3">
                   <Box className="w-2 h-2 bg-blue-500 rounded-full" />
                   <VStack className="flex-1">
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       Contributed 15 data points
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-400"
+                      className="text-typography-600 dark:text-typography-300"
                     >
                       1 week ago
                     </Text>
@@ -285,12 +285,12 @@ const ProfilePage = () => {
                 <HStack className="items-center space-x-3">
                   <Box className="w-2 h-2 bg-purple-500 rounded-full" />
                   <VStack className="flex-1">
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       Started community discussion
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-400"
+                      className="text-typography-600 dark:text-typography-300"
                     >
                       2 weeks ago
                     </Text>
@@ -305,7 +305,7 @@ const ProfilePage = () => {
             <VStack className="space-y-4">
               <Heading
                 size="md"
-                className="text-typography-900 dark:text-typography-100"
+                className="text-typography-900 dark:text-typography-950"
               >
                 {t("settings")}
               </Heading>
@@ -317,7 +317,7 @@ const ProfilePage = () => {
                       size="md"
                       className="text-typography-500"
                     />
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       Theme
                     </Text>
                   </HStack>
@@ -334,7 +334,7 @@ const ProfilePage = () => {
                       />
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-400"
+                        className="text-typography-600 dark:text-typography-300"
                       >
                         {colorScheme === "dark" ? "Light Mode" : "Dark Mode"}
                       </Text>
@@ -351,7 +351,7 @@ const ProfilePage = () => {
                       size="md"
                       className="text-typography-500"
                     />
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       {t("language")}
                     </Text>
                   </HStack>
@@ -369,7 +369,7 @@ const ProfilePage = () => {
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
                     <Icon as={Bell} size="md" className="text-typography-500" />
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       {t("notifications")}
                     </Text>
                   </HStack>
@@ -387,7 +387,7 @@ const ProfilePage = () => {
                       size="md"
                       className="text-typography-500"
                     />
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       {t("privacy")}
                     </Text>
                   </HStack>
@@ -405,7 +405,7 @@ const ProfilePage = () => {
                       size="md"
                       className="text-typography-500"
                     />
-                    <Text className="text-typography-900 dark:text-typography-100">
+                    <Text className="text-typography-900 dark:text-typography-950">
                       {t("about")}
                     </Text>
                   </HStack>
