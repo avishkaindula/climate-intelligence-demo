@@ -40,7 +40,8 @@ export default function CommunityScreen() {
       id: 1,
       name: "Lions Club",
       members: 2400,
-      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop",
       description: "Service above self - join Lions in making a difference",
       category: "Service",
       rating: 4.9,
@@ -51,7 +52,8 @@ export default function CommunityScreen() {
       id: 2,
       name: "Rotaract",
       members: 1800,
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=300&h=200&fit=crop",
       description: "Young professionals creating positive change",
       category: "Youth Service",
       rating: 4.8,
@@ -62,7 +64,8 @@ export default function CommunityScreen() {
       id: 3,
       name: "Green Warriors",
       members: 3200,
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop",
       description: "Environmental action starts here",
       category: "Environment",
       rating: 4.7,
@@ -73,7 +76,8 @@ export default function CommunityScreen() {
       id: 4,
       name: "Youth for Climate",
       members: 2800,
-      image: "https://images.unsplash.com/photo-1569748130764-3fed0c102c59?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&h=200&fit=crop",
       description: "Young voices for climate action",
       category: "Climate",
       rating: 4.9,
@@ -89,7 +93,8 @@ export default function CommunityScreen() {
       author: "Sarah Chen",
       replies: 23,
       lastActive: "2h ago",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
       category: "Environment",
     },
     {
@@ -98,16 +103,18 @@ export default function CommunityScreen() {
       author: "Miguel Santos",
       replies: 18,
       lastActive: "5h ago",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
       category: "Education",
     },
     {
       id: 3,
       title: "Partnership opportunities with local businesses",
-      author: "Emma Johnson",
+      author: "Sarah Chen",
       replies: 31,
       lastActive: "1d ago",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
       category: "Partnerships",
     },
   ];
@@ -189,28 +196,16 @@ export default function CommunityScreen() {
             <Button
               size="sm"
               variant={community.isJoined ? "outline" : "solid"}
-              className={
-                community.isJoined
-                  ? ""
-                  : ""
-              }
+              className={community.isJoined ? "" : ""}
             >
               <HStack space="xs" className="items-center">
                 <Icon
                   as={community.isJoined ? Eye : UserPlus}
                   size="sm"
-                  className={
-                    community.isJoined
-                      ? ""
-                      : "text-white"
-                  }
+                  className={community.isJoined ? "" : "text-white"}
                 />
                 <Text
-                  className={
-                    community.isJoined
-                      ? ""
-                      : "text-white font-medium"
-                  }
+                  className={community.isJoined ? "" : "text-white font-medium"}
                 >
                   {community.isJoined ? t("view") : t("join")}
                 </Text>
@@ -307,8 +302,10 @@ export default function CommunityScreen() {
                   <Card className="p-4 border border-gray-200 dark:border-gray-800">
                     <HStack space="sm" className="items-start">
                       <Avatar size="md">
-                        <AvatarImage source={{ uri: discussion.avatar }} alt={discussion.author} />
-                        <AvatarFallbackText>{discussion.author}</AvatarFallbackText>
+                        <AvatarImage
+                          source={{ uri: discussion.avatar }}
+                          alt={discussion.author}
+                        />
                       </Avatar>
                       <VStack className="flex-1" space="xs">
                         <HStack className="justify-between items-start">
@@ -326,7 +323,11 @@ export default function CommunityScreen() {
                             {t("by")} {discussion.author}
                           </Text>
                           <HStack space="xs" className="items-center">
-                            <Icon as={MessageCircle} size="xs" className="text-typography-500" />
+                            <Icon
+                              as={MessageCircle}
+                              size="xs"
+                              className="text-typography-500"
+                            />
                             <Text className="text-typography-600 dark:text-typography-750 text-sm">
                               {discussion.replies} {t("replies")}
                             </Text>
@@ -366,13 +367,13 @@ export default function CommunityScreen() {
                       {/* Date Box */}
                       <VStack className="bg-primary-100 dark:bg-primary-900 rounded-lg p-3 items-center min-w-16">
                         <Text className="text-primary-800 dark:text-primary-200 text-lg font-bold">
-                          {event.date.split(' ')[1]}
+                          {event.date.split(" ")[1]}
                         </Text>
                         <Text className="text-primary-600 dark:text-primary-400 text-xs font-medium">
-                          {event.date.split(' ')[0]}
+                          {event.date.split(" ")[0]}
                         </Text>
                       </VStack>
-                      
+
                       {/* Event Details */}
                       <VStack className="flex-1" space="xs">
                         <Text className="text-typography-900 dark:text-typography-950 font-semibold">
@@ -380,7 +381,11 @@ export default function CommunityScreen() {
                         </Text>
                         <HStack space="md" className="items-center">
                           <HStack space="xs" className="items-center">
-                            <Icon as={MapPin} size="xs" className="text-typography-500" />
+                            <Icon
+                              as={MapPin}
+                              size="xs"
+                              className="text-typography-500"
+                            />
                             <Text className="text-typography-600 dark:text-typography-750 text-sm">
                               {event.location}
                             </Text>
@@ -394,7 +399,11 @@ export default function CommunityScreen() {
                             {event.community}
                           </Text>
                           <HStack space="xs" className="items-center">
-                            <Icon as={Users} size="xs" className="text-typography-500" />
+                            <Icon
+                              as={Users}
+                              size="xs"
+                              className="text-typography-500"
+                            />
                             <Text className="text-typography-600 dark:text-typography-750 text-sm">
                               {event.attendees} {t("attending")}
                             </Text>
