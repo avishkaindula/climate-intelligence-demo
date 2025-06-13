@@ -309,7 +309,7 @@ const ProfilePage = () => {
               >
                 {t("settings")}
               </Heading>
-              <VStack className="space-y-3">
+              {/* <VStack className="space-y-3">
                 <VStack className="space-y-3">
                   <HStack className="items-center space-x-3">
                     <Icon
@@ -413,7 +413,7 @@ const ProfilePage = () => {
                     <Text>Info</Text>
                   </Button>
                 </HStack>
-              </VStack>
+              </VStack> */}
             </VStack>
           </Card>
         </Box>
