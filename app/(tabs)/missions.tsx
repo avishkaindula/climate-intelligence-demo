@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
+import { ScrollView, Image, TextInput } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading";
@@ -12,56 +12,219 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useLanguage } from "@/components/i18n/LanguageContext";
-import { Target, Clock, Users, Award } from "lucide-react-native";
+import { 
+  Target, 
+  Clock, 
+  Users, 
+  Award, 
+  Search,
+  Filter,
+  SortAsc,
+  MapPin,
+  Thermometer,
+  Droplets,
+  Wind,
+  Leaf,
+  Camera,
+  FileText,
+  Calendar,
+  TrendingUp,
+  CheckCircle,
+  Play
+} from "lucide-react-native";
 
 const MissionsPage = () => {
   const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
+  const [sortBy, setSortBy] = useState('newest');
 
-  const activeMissions = [
+  // User stats
+  const userStats = {
+    completed: 12,
+    active: 3,
+    totalPoints: 850,
+    rank: 45,
+  };
+
+  // My ongoing missions
+  const myMissions = [
     {
       id: 1,
-      title: "Temperature Data Collection",
-      description: "Help collect temperature readings across urban areas",
+      title: "Urban Heat Island Mapping",
+      description: "Help map temperature variations in your city",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop",
       progress: 65,
-      participants: 234,
       deadline: "5 days left",
-      reward: "50 points",
-      difficulty: "Easy",
+      points: 150,
+      category: "dataCollection",
+      difficulty: "intermediate",
+      participants: 234,
+      status: "ongoing"
     },
     {
       id: 2,
-      title: "Air Quality Monitoring",
-      description: "Document air quality in industrial zones",
-      progress: 32,
-      participants: 156,
+      title: "Community Climate Workshop",
+      description: "Organize climate awareness in your neighborhood",
+      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=300&h=200&fit=crop",
+      progress: 30,
       deadline: "12 days left",
-      reward: "100 points",
-      difficulty: "Medium",
-    },
+      points: 200,
+      category: "awareness",
+      difficulty: "beginner",
+      participants: 156,
+      status: "ongoing"
+    }
+  ];
+
+  // All available missions
+  const allMissions = [
+    ...myMissions,
     {
       id: 3,
-      title: "Flood Impact Assessment",
-      description: "Report flood damage and recovery progress",
-      progress: 78,
+      title: "Biodiversity Survey",
+      description: "Document local flora and fauna changes",
+      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop",
+      progress: 0,
+      deadline: "30 days left",
+      points: 300,
+      category: "research",
+      difficulty: "advanced",
       participants: 89,
-      deadline: "2 days left",
-      reward: "150 points",
-      difficulty: "Hard",
+      status: "available"
     },
+    {
+      id: 4,
+      title: "Ocean Cleanup Documentation",
+      description: "Report marine pollution and cleanup efforts",
+      image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=300&h=200&fit=crop",
+      progress: 0,
+      deadline: "45 days left",
+      points: 250,
+      category: "action",
+      difficulty: "intermediate",
+      participants: 167,
+      status: "available"
+    },
+    {
+      id: 5,
+      title: "Air Quality Monitoring",
+      description: "Track air pollution levels in urban areas",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop",
+      progress: 0,
+      deadline: "20 days left",
+      points: 180,
+      category: "dataCollection",
+      difficulty: "beginner",
+      participants: 245,
+      status: "available"
+    },
+    {
+      id: 6,
+      title: "Sustainable Agriculture Training",
+      description: "Learn and teach climate-smart farming",
+      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+      progress: 100,
+      deadline: "Completed",
+      points: 220,
+      category: "awareness",
+      difficulty: "intermediate",
+      participants: 78,
+      status: "completed"
+    }
+  ];
+
+  // Featured campaigns
+  const featuredCampaigns = [
+    {
+      id: 1,
+      title: "Save the Amazon Initiative",
+      description: "Global campaign to protect rainforest ecosystems",
+      image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=400&h=250&fit=crop",
+      points: 500,
+      participants: 2340,
+      difficulty: "expert",
+      deadline: "60 days left",
+      category: "action"
+    },
+    {
+      id: 2,
+      title: "Climate Education for All",
+      description: "Bring climate science to underserved communities",
+      image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop",
+      points: 350,
+      participants: 1890,
+      difficulty: "intermediate",
+      deadline: "90 days left",
+      category: "awareness"
+    }
   ];
 
   const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Easy":
-        return "success";
-      case "Medium":
-        return "warning";
-      case "Hard":
-        return "error";
+    const colors: Record<string, string> = {
+      beginner: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+      intermediate: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
+      advanced: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
+      expert: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+    };
+    return colors[difficulty] || colors.beginner;
+  };
+
+  const getCategoryIcon = (category: string) => {
+    const icons: Record<string, any> = {
+      dataCollection: Thermometer,
+      research: FileText,
+      awareness: Users,
+      action: Target,
+    };
+    return icons[category] || Target;
+  };
+
+  const getCategoryColor = (category: string) => {
+    const colors: Record<string, string> = {
+      dataCollection: 'text-blue-600 dark:text-blue-400',
+      research: 'text-purple-600 dark:text-purple-400',
+      awareness: 'text-green-600 dark:text-green-400',
+      action: 'text-orange-600 dark:text-orange-400',
+    };
+    return colors[category] || 'text-gray-600 dark:text-gray-400';
+  };
+
+  const getStatusBadge = (status: string, progress?: number) => {
+    switch (status) {
+      case 'completed':
+        return (
+          <Badge variant="solid" className="bg-green-500">
+            <Text size="xs" className="text-white">{t('completed')}</Text>
+          </Badge>
+        );
+      case 'ongoing':
+        return (
+          <Badge variant="solid" className="bg-blue-500">
+            <Text size="xs" className="text-white">{progress}% {t('progress')}</Text>
+          </Badge>
+        );
       default:
-        return "info";
+        return (
+          <Badge variant="outline" className="border-primary-500">
+            <Text size="xs" className="text-primary-600 dark:text-primary-400">Available</Text>
+          </Badge>
+        );
     }
   };
+
+  const filteredMissions = allMissions.filter(mission => {
+    const matchesTab = activeTab === 'all' || 
+      (activeTab === 'my' && ['ongoing', 'completed'].includes(mission.status));
+    const matchesSearch = mission.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      mission.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || mission.category === selectedCategory;
+    const matchesDifficulty = selectedDifficulty === 'all' || mission.difficulty === selectedDifficulty;
+    
+    return matchesTab && matchesSearch && matchesCategory && matchesDifficulty;
+  });
 
   return (
     <SafeAreaView
@@ -74,7 +237,7 @@ const MissionsPage = () => {
           <VStack space="lg" className="mb-8">
             <HStack space="lg" className="items-center">
               <Icon as={Target} size="xl" className="text-primary-500" />
-              <VStack space="sm">
+              <VStack space="xs" className="flex-1">
                 <Heading
                   size="xl"
                   className="text-typography-900 dark:text-typography-950"
@@ -89,204 +252,362 @@ const MissionsPage = () => {
                 </Text>
               </VStack>
             </HStack>
+
+            {/* User Stats Card */}
+            <Card className="p-4 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border border-gray-200 dark:border-gray-800">
+              <HStack className="justify-between items-center">
+                <VStack space="xs" className="items-center">
+                  <Text
+                    size="2xl"
+                    className="font-bold text-primary-600 dark:text-primary-400"
+                  >
+                    {userStats.completed}
+                  </Text>
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-750"
+                  >
+                    {t('completed')}
+                  </Text>
+                </VStack>
+                <VStack space="xs" className="items-center">
+                  <Text
+                    size="2xl"
+                    className="font-bold text-blue-600 dark:text-blue-400"
+                  >
+                    {userStats.active}
+                  </Text>
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-750"
+                  >
+                    {t('ongoing')}
+                  </Text>
+                </VStack>
+                <VStack space="xs" className="items-center">
+                  <Text
+                    size="2xl"
+                    className="font-bold text-green-600 dark:text-green-400"
+                  >
+                    {userStats.totalPoints}
+                  </Text>
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-750"
+                  >
+                    {t('points')}
+                  </Text>
+                </VStack>
+                <VStack space="xs" className="items-center">
+                  <Text
+                    size="2xl"
+                    className="font-bold text-orange-600 dark:text-orange-400"
+                  >
+                    #{userStats.rank}
+                  </Text>
+                  <Text
+                    size="sm"
+                    className="text-typography-600 dark:text-typography-750"
+                  >
+                    Global Rank
+                  </Text>
+                </VStack>
+              </HStack>
+            </Card>
           </VStack>
 
-          {/* Stats */}
-          <Card className="p-6 mb-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20">
-            <HStack className="justify-between items-center">
-              <VStack className="items-center">
-                <Text
-                  size="2xl"
-                  className="font-bold text-primary-600 dark:text-primary-400"
-                >
-                  12
-                </Text>
-                <Text
-                  size="sm"
-                  className="text-typography-600 dark:text-typography-300"
-                >
-                  Completed
-                </Text>
-              </VStack>
-              <VStack className="items-center">
-                <Text
-                  size="2xl"
-                  className="font-bold text-secondary-600 dark:text-secondary-400"
-                >
-                  3
-                </Text>
-                <Text
-                  size="sm"
-                  className="text-typography-600 dark:text-typography-300"
-                >
-                  Active
-                </Text>
-              </VStack>
-              <VStack className="items-center">
-                <Text
-                  size="2xl"
-                  className="font-bold text-green-600 dark:text-green-400"
-                >
-                  850
-                </Text>
-                <Text
-                  size="sm"
-                  className="text-typography-600 dark:text-typography-300"
-                >
-                  Points Earned
-                </Text>
-              </VStack>
-            </HStack>
-          </Card>
-
-          {/* Active Missions */}
-          <VStack className="space-y-4 mb-6">
+          {/* Featured Campaigns */}
+          <VStack space="lg" className="mb-8">
             <Heading
-              size="md"
+              size="lg"
               className="text-typography-900 dark:text-typography-950"
             >
-              {t("activeMissions")}
+              Featured {t('campaigns')}
             </Heading>
+            
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <HStack space="lg">
+                {featuredCampaigns.map((campaign) => (
+                  <Card
+                    key={campaign.id}
+                    className="w-80 h-56 overflow-hidden relative border border-gray-200 dark:border-gray-800"
+                  >
+                    <Box className="absolute inset-0">
+                      <Image
+                        source={{ uri: campaign.image }}
+                        className="w-full h-full"
+                        style={{ resizeMode: "cover" }}
+                      />
+                      <Box className="absolute inset-0 bg-black/60" />
+                    </Box>
+                    <Box className="absolute top-4 right-4">
+                      <Badge variant="solid" className="bg-white/90">
+                        <Text size="xs" className="text-gray-900">
+                          {campaign.points} pts
+                        </Text>
+                      </Badge>
+                    </Box>
+                    <Box className="absolute bottom-0 left-0 right-0 p-4">
+                      <VStack space="md">
+                        <HStack space="xs" className="items-center">
+                          <Badge variant="solid" className={getDifficultyColor(campaign.difficulty)}>
+                            <Text size="xs">{t(campaign.difficulty)}</Text>
+                          </Badge>
+                          <Badge variant="outline" className="border-white/40">
+                            <Text size="xs" className="text-white">
+                              {t(campaign.category)}
+                            </Text>
+                          </Badge>
+                        </HStack>
+                        <VStack space="xs">
+                          <Text
+                            className="font-bold text-white text-lg"
+                            numberOfLines={2}
+                          >
+                            {campaign.title}
+                          </Text>
+                          <Text
+                            size="sm"
+                            className="text-white/90"
+                            numberOfLines={2}
+                          >
+                            {campaign.description}
+                          </Text>
+                          <HStack space="md" className="items-center">
+                            <HStack space="xs" className="items-center">
+                              <Icon as={Users} size="sm" className="text-white/80" />
+                              <Text size="xs" className="text-white/80">
+                                {campaign.participants}
+                              </Text>
+                            </HStack>
+                            <HStack space="xs" className="items-center">
+                              <Icon as={Clock} size="sm" className="text-white/80" />
+                              <Text size="xs" className="text-white/80">
+                                {campaign.deadline}
+                              </Text>
+                            </HStack>
+                          </HStack>
+                        </VStack>
+                        <Button size="sm" className="bg-white/20 border-white/40">
+                          <Text className="text-white">{t('joinCampaign')}</Text>
+                        </Button>
+                      </VStack>
+                    </Box>
+                  </Card>
+                ))}
+              </HStack>
+            </ScrollView>
+          </VStack>
 
-            {activeMissions.map((mission) => (
-              <Card key={mission.id} className="p-4">
-                <VStack className="space-y-4">
-                  <HStack className="justify-between items-start">
-                    <VStack className="flex-1 space-y-2">
-                      <Text className="font-semibold text-typography-900 dark:text-typography-950">
-                        {mission.title}
-                      </Text>
+          {/* Tabs and Search */}
+          <VStack space="lg" className="mb-6">
+            {/* Tab Navigation */}
+            <HStack space="md">
+              <Button
+                variant={activeTab === 'all' ? 'solid' : 'outline'}
+                size="sm"
+                onPress={() => setActiveTab('all')}
+                className="flex-1"
+              >
+                <Text className={activeTab === 'all' ? 'text-white' : ''}>
+                  {t('allMissions')}
+                </Text>
+              </Button>
+              <Button
+                variant={activeTab === 'my' ? 'solid' : 'outline'}
+                size="sm"
+                onPress={() => setActiveTab('my')}
+                className="flex-1"
+              >
+                <Text className={activeTab === 'my' ? 'text-white' : ''}>
+                  {t('myMissions')}
+                </Text>
+              </Button>
+            </HStack>
+
+            {/* Search and Filters */}
+            <VStack space="md">
+              {/* Search Bar */}
+              <Box className="relative">
+                <HStack space="md" className="items-center border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3">
+                  <Icon as={Search} size="sm" className="text-gray-500" />
+                  <Box className="flex-1">
+                    <TextInput
+                      placeholder={t('searchMissions')}
+                      value={searchQuery}
+                      onChangeText={setSearchQuery}
+                      className="text-typography-900 dark:text-typography-950 flex-1"
+                      placeholderTextColor="#9CA3AF"
+                    />
+                  </Box>
+                </HStack>
+              </Box>
+
+              {/* Filter Buttons */}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <HStack space="md">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-300 dark:border-gray-600"
+                  >
+                    <HStack space="xs" className="items-center">
+                      <Icon as={Filter} size="xs" className="text-gray-500" />
+                      <Text size="sm">{t('category')}</Text>
+                    </HStack>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-300 dark:border-gray-600"
+                  >
+                    <HStack space="xs" className="items-center">
+                      <Icon as={TrendingUp} size="xs" className="text-gray-500" />
+                      <Text size="sm">Difficulty</Text>
+                    </HStack>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-300 dark:border-gray-600"
+                  >
+                    <HStack space="xs" className="items-center">
+                      <Icon as={SortAsc} size="xs" className="text-gray-500" />
+                      <Text size="sm">{t('sortBy')}</Text>
+                    </HStack>
+                  </Button>
+                </HStack>
+              </ScrollView>
+            </VStack>
+          </VStack>
+
+          {/* Missions List */}
+          <VStack space="lg">
+            {filteredMissions.map((mission) => (
+              <Card
+                key={mission.id}
+                className="overflow-hidden border border-gray-200 dark:border-gray-800"
+              >
+                <HStack space="md">
+                  {/* Mission Image */}
+                  <Box className="relative">
+                    <Image
+                      source={{ uri: mission.image }}
+                      className="w-24 h-24"
+                      style={{ resizeMode: "cover" }}
+                    />
+                    <Box className="absolute top-1 right-1">
+                      <Badge variant="solid" className="bg-primary-500">
+                        <Text size="xs" className="text-white">
+                          {mission.points}
+                        </Text>
+                      </Badge>
+                    </Box>
+                  </Box>
+
+                  {/* Mission Content */}
+                  <VStack space="md" className="flex-1 p-4">
+                    <VStack space="xs">
+                      <HStack className="justify-between items-start">
+                        <Text
+                          className="font-semibold text-typography-900 dark:text-typography-950 flex-1"
+                          numberOfLines={2}
+                        >
+                          {mission.title}
+                        </Text>
+                        {getStatusBadge(mission.status, mission.progress)}
+                      </HStack>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-300"
+                        className="text-typography-600 dark:text-typography-750"
+                        numberOfLines={2}
                       >
                         {mission.description}
                       </Text>
                     </VStack>
-                    <Badge
-                      variant="solid"
-                      action={getDifficultyColor(mission.difficulty)}
-                      className="ml-2"
-                    >
-                      <Text size="xs">{mission.difficulty}</Text>
-                    </Badge>
-                  </HStack>
 
-                  <VStack className="space-y-2">
-                    <HStack className="justify-between">
-                      <Text
-                        size="sm"
-                        className="text-typography-600 dark:text-typography-300"
-                      >
-                        Progress
-                      </Text>
-                      <Text
-                        size="sm"
-                        className="text-typography-600 dark:text-typography-300"
-                      >
-                        {mission.progress}%
-                      </Text>
+                    <HStack space="xs" className="items-center">
+                      <Badge variant="outline" className={getDifficultyColor(mission.difficulty)}>
+                        <Text size="xs">{t(mission.difficulty)}</Text>
+                      </Badge>
+                      <Badge variant="outline">
+                        <HStack space="xs" className="items-center">
+                          <Icon
+                            as={getCategoryIcon(mission.category)}
+                            size="xs"
+                            className={getCategoryColor(mission.category)}
+                          />
+                          <Text size="xs" className="text-typography-600 dark:text-typography-750">
+                            {t(mission.category)}
+                          </Text>
+                        </HStack>
+                      </Badge>
                     </HStack>
-                    <Progress value={mission.progress} className="h-2" />
+
+                    {mission.status === 'ongoing' && (
+                      <VStack space="xs">
+                        <HStack className="justify-between">
+                          <Text
+                            size="sm"
+                            className="text-typography-600 dark:text-typography-750"
+                          >
+                            {t('progress')}
+                          </Text>
+                          <Text
+                            size="sm"
+                            className="text-typography-600 dark:text-typography-750"
+                          >
+                            {mission.progress}%
+                          </Text>
+                        </HStack>
+                        <Progress value={mission.progress} className="h-2" />
+                      </VStack>
+                    )}
+
+                    <HStack className="justify-between items-center">
+                      <HStack space="md">
+                        <HStack space="xs" className="items-center">
+                          <Icon as={Users} size="sm" className="text-gray-500" />
+                          <Text size="sm" className="text-typography-600 dark:text-typography-750">
+                            {mission.participants}
+                          </Text>
+                        </HStack>
+                        <HStack space="xs" className="items-center">
+                          <Icon as={Clock} size="sm" className="text-gray-500" />
+                          <Text size="sm" className="text-typography-600 dark:text-typography-750">
+                            {mission.deadline}
+                          </Text>
+                        </HStack>
+                      </HStack>
+                      
+                      <Button
+                        size="sm"
+                        variant={mission.status === 'completed' ? 'outline' : 'solid'}
+                        disabled={mission.status === 'completed'}
+                      >
+                        <HStack space="xs" className="items-center">
+                          {mission.status === 'completed' ? (
+                            <Icon as={CheckCircle} size="sm" className="text-green-500" />
+                          ) : mission.status === 'ongoing' ? (
+                            <Icon as={Play} size="sm" className="text-white" />
+                          ) : (
+                            <Icon as={Target} size="sm" className="text-white" />
+                          )}
+                          <Text className={mission.status === 'completed' ? '' : 'text-white'}>
+                            {mission.status === 'completed' 
+                              ? t('missionCompleted')
+                              : mission.status === 'ongoing'
+                              ? t('continueMission')
+                              : t('startMission')
+                            }
+                          </Text>
+                        </HStack>
+                      </Button>
+                    </HStack>
                   </VStack>
-
-                  <HStack className="justify-between items-center">
-                    <HStack className="space-x-4">
-                      <HStack className="items-center space-x-1">
-                        <Icon
-                          as={Users}
-                          size="sm"
-                          className="text-typography-500"
-                        />
-                        <Text
-                          size="sm"
-                          className="text-typography-600 dark:text-typography-300"
-                        >
-                          {mission.participants}
-                        </Text>
-                      </HStack>
-                      <HStack className="items-center space-x-1">
-                        <Icon
-                          as={Clock}
-                          size="sm"
-                          className="text-typography-500"
-                        />
-                        <Text
-                          size="sm"
-                          className="text-typography-600 dark:text-typography-300"
-                        >
-                          {mission.deadline}
-                        </Text>
-                      </HStack>
-                      <HStack className="items-center space-x-1">
-                        <Icon
-                          as={Award}
-                          size="sm"
-                          className="text-typography-500"
-                        />
-                        <Text
-                          size="sm"
-                          className="text-typography-600 dark:text-typography-300"
-                        >
-                          {mission.reward}
-                        </Text>
-                      </HStack>
-                    </HStack>
-                    <Button size="sm">
-                      <Text>{t("joinMission")}</Text>
-                    </Button>
-                  </HStack>
-                </VStack>
+                </HStack>
               </Card>
             ))}
-          </VStack>
-
-          {/* Completed Missions */}
-          <VStack className="space-y-4">
-            <Heading
-              size="md"
-              className="text-typography-900 dark:text-typography-950"
-            >
-              {t("completedMissions")}
-            </Heading>
-
-            <Card className="p-4">
-              <HStack className="justify-between items-center">
-                <VStack>
-                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
-                    Rainfall Pattern Documentation
-                  </Text>
-                  <Text
-                    size="sm"
-                    className="text-typography-600 dark:text-typography-300"
-                  >
-                    Completed 1 week ago
-                  </Text>
-                </VStack>
-                <Badge variant="solid" action="success">
-                  <Text size="xs">Completed</Text>
-                </Badge>
-              </HStack>
-            </Card>
-
-            <Card className="p-4">
-              <HStack className="justify-between items-center">
-                <VStack>
-                  <Text className="font-semibold text-typography-900 dark:text-typography-950">
-                    Wildlife Migration Tracking
-                  </Text>
-                  <Text
-                    size="sm"
-                    className="text-typography-600 dark:text-typography-300"
-                  >
-                    Completed 2 weeks ago
-                  </Text>
-                </VStack>
-                <Badge variant="solid" action="success">
-                  <Text size="xs">Completed</Text>
-                </Badge>
-              </HStack>
-            </Card>
           </VStack>
         </Box>
       </ScrollView>
