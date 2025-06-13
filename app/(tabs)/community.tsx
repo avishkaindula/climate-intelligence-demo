@@ -73,7 +73,7 @@ export default function CommunityScreen() {
       id: 4,
       name: "Youth for Climate",
       members: 2800,
-      image: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e5?w=300&h=200&fit=crop",
+      image: "https://images.unsplash.com/photo-1569748130764-3fed0c102c59?w=300&h=200&fit=crop",
       description: "Young voices for climate action",
       category: "Climate",
       rating: 4.9,
@@ -89,7 +89,7 @@ export default function CommunityScreen() {
       author: "Sarah Chen",
       replies: 23,
       lastActive: "2h ago",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612d5c5?w=100&h=100&fit=crop&crop=face",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
       category: "Environment",
     },
     {
