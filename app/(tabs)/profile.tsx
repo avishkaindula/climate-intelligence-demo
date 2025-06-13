@@ -121,7 +121,6 @@ const ProfilePage = () => {
                       uri: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
                     }}
                   />
-                  <AvatarFallbackText>Carlos Mendoza</AvatarFallbackText>
                 </Avatar>
                 <VStack space="xs" className="flex-1">
                   <Heading
