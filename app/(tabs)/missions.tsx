@@ -489,21 +489,42 @@ const MissionsPage = () => {
                 className="overflow-hidden border border-gray-200 dark:border-gray-800"
               >
                 <HStack space="md">
-                  {/* Mission Image */}
-                  <Box className="relative">
-                    <Image
-                      source={{ uri: mission.image }}
-                      className="w-24 h-24"
-                      style={{ resizeMode: "cover" }}
-                    />
-                    <Box className="absolute top-1 right-1">
-                      <Badge variant="solid" className="bg-primary-500">
-                        <Text size="xs" className="text-white">
-                          {mission.points}
-                        </Text>
-                      </Badge>
+                  {/* Mission Image with Additional Info */}
+                  <VStack space="xs" className="w-24">
+                    <Box className="relative">
+                      <Image
+                        source={{ uri: mission.image }}
+                        className="w-24 h-16"
+                        style={{ resizeMode: "cover" }}
+                      />
+                      <Box className="absolute top-1 right-1">
+                        <Badge variant="solid" className="bg-primary-500">
+                          <Text size="xs" className="text-white">
+                            {mission.points}
+                          </Text>
+                        </Badge>
+                      </Box>
                     </Box>
-                  </Box>
+                    
+                    {/* Additional mission info below image */}
+                    <VStack space="xs" className="w-full">
+                      <Box className="bg-gray-50 dark:bg-gray-800 p-2 rounded">
+                        <VStack space="xs" className="items-center">
+                          <HStack space="xs" className="items-center">
+                            <Icon as={Award} size="xs" className="text-orange-500" />
+                            <Text size="xs" className="text-typography-700 dark:text-typography-300 font-medium">
+                              Rank #{Math.floor(Math.random() * 50) + 1}
+                            </Text>
+                          </HStack>
+                          <Text size="xs" className="text-typography-600 dark:text-typography-400 text-center">
+                            {mission.status === 'completed' ? 'Completed!' : 
+                             mission.status === 'ongoing' ? 'In Progress' : 
+                             'Join Now'}
+                          </Text>
+                        </VStack>
+                      </Box>
+                    </VStack>
+                  </VStack>
 
                   {/* Mission Content */}
                   <VStack space="md" className="flex-1 p-4">
@@ -564,26 +585,30 @@ const MissionsPage = () => {
                       </VStack>
                     )}
 
-                    <HStack className="justify-between items-center">
-                      <HStack space="md">
-                        <HStack space="xs" className="items-center">
-                          <Icon as={Users} size="sm" className="text-gray-500" />
-                          <Text size="sm" className="text-typography-600 dark:text-typography-750">
-                            {mission.participants}
-                          </Text>
-                        </HStack>
-                        <HStack space="xs" className="items-center">
-                          <Icon as={Clock} size="sm" className="text-gray-500" />
-                          <Text size="sm" className="text-typography-600 dark:text-typography-750">
-                            {mission.deadline}
-                          </Text>
+                    <VStack space="xs">
+                      <HStack className="justify-between items-center">
+                        <HStack space="md">
+                          <HStack space="xs" className="items-center">
+                            <Icon as={Users} size="sm" className="text-gray-500" />
+                            <Text size="sm" className="text-typography-600 dark:text-typography-750">
+                              {mission.participants}
+                            </Text>
+                          </HStack>
+                          <HStack space="xs" className="items-center">
+                            <Icon as={Clock} size="sm" className="text-gray-500" />
+                            <Text size="sm" className="text-typography-600 dark:text-typography-750">
+                              {mission.deadline}
+                            </Text>
+                          </HStack>
                         </HStack>
                       </HStack>
                       
+                      {/* Action Button below the info */}
                       <Button
                         size="sm"
                         variant={mission.status === 'completed' ? 'outline' : 'solid'}
                         disabled={mission.status === 'completed'}
+                        className="self-end"
                       >
                         <HStack space="xs" className="items-center">
                           {mission.status === 'completed' ? (
@@ -595,15 +620,15 @@ const MissionsPage = () => {
                           )}
                           <Text className={mission.status === 'completed' ? '' : 'text-white'}>
                             {mission.status === 'completed' 
-                              ? t('missionCompleted')
+                              ? 'Completed'
                               : mission.status === 'ongoing'
-                              ? t('continueMission')
-                              : t('startMission')
+                              ? 'Continue'
+                              : 'Start'
                             }
                           </Text>
                         </HStack>
                       </Button>
-                    </HStack>
+                    </VStack>
                   </VStack>
                 </HStack>
               </Card>
