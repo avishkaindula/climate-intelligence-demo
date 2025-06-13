@@ -17,6 +17,7 @@ import {
   Inter_700Bold,
   Inter_900Black,
 } from "@expo-google-fonts/inter";
+import { LanguageProvider } from "@/components/i18n/LanguageContext";
 
 import "../global.css";
 
@@ -71,10 +72,12 @@ function RootLayoutNav() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Slot />
-      </ThemeProvider>
-    </GluestackUIProvider>
+    <LanguageProvider>
+      <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
+        <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+          <Slot />
+        </ThemeProvider>
+      </GluestackUIProvider>
+    </LanguageProvider>
   );
 }
