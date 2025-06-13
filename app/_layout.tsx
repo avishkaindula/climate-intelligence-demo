@@ -9,7 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { useColorScheme } from "nativewind";
-import { Slot, Tabs } from "expo-router";
+import { Slot, Stack, Tabs } from "expo-router";
 import {
   Inter_400Regular,
   Inter_500Medium,
@@ -90,69 +90,9 @@ function RootLayoutNav() {
         <ThemeProvider
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-          <Tabs
-            screenOptions={{
-              headerShown: useClientOnlyValue(false, true),
-              tabBarActiveTintColor: "#059669", // green-600
-              tabBarInactiveTintColor: "#6b7280", // gray-500
-              tabBarStyle: {
-                backgroundColor: "#ffffff",
-                borderTopColor: "#e5e7eb",
-              },
-            }}
-          >
-            <Tabs.Screen
-              name="index"
-              options={{
-                title: "Home",
-                tabBarIcon: ({ color }) => (
-                  <TabBarIcon IconComponent={Home} color={color} />
-                ),
-              }}
-            />
-
-            <Tabs.Screen
-              name="missions"
-              options={{
-                title: "Missions",
-                tabBarIcon: ({ color }) => (
-                  <TabBarIcon IconComponent={Target} color={color} />
-                ),
-                tabBarBadge: "3",
-              }}
-            />
-
-            <Tabs.Screen
-              name="map"
-              options={{
-                title: "Map",
-                tabBarIcon: ({ color }) => (
-                  <TabBarIcon IconComponent={Map} color={color} />
-                ),
-              }}
-            />
-
-            <Tabs.Screen
-              name="community"
-              options={{
-                title: "Community",
-                tabBarIcon: ({ color }) => (
-                  <TabBarIcon IconComponent={Users} color={color} />
-                ),
-                tabBarBadge: "2",
-              }}
-            />
-
-            <Tabs.Screen
-              name="profile"
-              options={{
-                title: "Profile",
-                tabBarIcon: ({ color }) => (
-                  <TabBarIcon IconComponent={User} color={color} />
-                ),
-              }}
-            />
-          </Tabs>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
         </ThemeProvider>
       </GluestackUIProvider>
     </LanguageProvider>
