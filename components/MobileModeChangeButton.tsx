@@ -12,7 +12,10 @@ const MobileModeChangeButton = () => {
         placement="bottom right"
         onPress={toggleColorMode}
       >
-        <FabIcon as={colorMode === "light" ? Moon : Sun} className="fill-current" />
+        <FabIcon
+          as={colorMode === "light" ? Moon : Sun}
+          className="fill-current"
+        />
       </Fab>
     </>
   );
