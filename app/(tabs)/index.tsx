@@ -177,7 +177,7 @@ const HomePage = () => {
             </HStack>
             
             {/* League Status Card */}
-            <Card className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+            <Card className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700">
               <HStack space="md" className="items-center">
                 <Box 
                   className="p-3 rounded-full"
@@ -242,7 +242,7 @@ const HomePage = () => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HStack space="lg">
                 {featuredMissions.map((mission) => (
-                  <Card key={mission.id} className="w-72 overflow-hidden">
+                  <Card key={mission.id} className="w-72 overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Box className="relative">
                       <Image 
                         source={{ uri: mission.image }}
@@ -332,7 +332,7 @@ const HomePage = () => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HStack space="lg">
                 {campaigns.map((campaign) => (
-                  <Card key={campaign.id} className="w-80 h-48 overflow-hidden relative">
+                  <Card key={campaign.id} className="w-80 h-48 overflow-hidden relative border border-gray-200 dark:border-gray-700">
                     <Box className="absolute inset-0">
                       <Image 
                         source={{ uri: campaign.image }}
@@ -408,7 +408,7 @@ const HomePage = () => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HStack space="md">
                 {rewards.map((reward) => (
-                  <Card key={reward.id} className="w-48 p-4">
+                  <Card key={reward.id} className="w-48 p-4 border border-gray-200 dark:border-gray-700">
                     <VStack space="md" className="items-center">
                       <Text className="text-3xl">{reward.logo}</Text>
                       <VStack space="xs" className="items-center">
