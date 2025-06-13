@@ -44,15 +44,15 @@ const HomePage = () => {
           </VStack>
 
           {/* Welcome Section */}
-          <Card className="p-6 mb-6 bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-800">
+          <Card className="p-6 mb-6 bg-secondary-50 dark:bg-secondary-900/20 border-secondary-200 dark:border-secondary-800">
             <VStack className="space-y-3">
               <Heading
                 size="lg"
-                className="text-primary-900 dark:text-primary-100"
+                className="text-typography-900 dark:text-typography-950"
               >
                 {t("homeWelcome")}
               </Heading>
-              <Text className="text-primary-800 dark:text-primary-200">
+              <Text className="text-typography-700 dark:text-typography-300">
                 {t("homeDescription")}
               </Text>
             </VStack>
