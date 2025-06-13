@@ -23,10 +23,10 @@ const HomePage = () => {
       <ScrollView className="flex-1">
         <Box className="p-6">
           {/* Header */}
-          <VStack className="space-y-4 mb-8">
-            <HStack className="items-center space-x-3">
+          <VStack space="lg" className="mb-8">
+            <HStack space="lg" className="items-center">
               <Icon as={Globe} size="xl" className="text-primary-500" />
-              <VStack>
+              <VStack space="sm">
                 <Heading
                   size="xl"
                   className="text-typography-900 dark:text-typography-950"
@@ -35,7 +35,7 @@ const HomePage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   {t("empoweringClimateAction")}
                 </Text>
@@ -45,21 +45,21 @@ const HomePage = () => {
 
           {/* Welcome Section */}
           <Card className="p-6 mb-6 bg-secondary-50 dark:bg-secondary-900/20 border-secondary-200 dark:border-secondary-800">
-            <VStack className="space-y-3">
+            <VStack space="md">
               <Heading
                 size="lg"
                 className="text-typography-900 dark:text-typography-950"
               >
                 {t("homeWelcome")}
               </Heading>
-              <Text className="text-typography-700 dark:text-typography-300">
+              <Text className="text-typography-700 dark:text-typography-200">
                 {t("homeDescription")}
               </Text>
             </VStack>
           </Card>
 
           {/* Quick Actions */}
-          <VStack className="space-y-4 mb-6">
+          <VStack space="lg" className="mb-6">
             <Heading
               size="md"
               className="text-typography-900 dark:text-typography-950"
@@ -67,9 +67,9 @@ const HomePage = () => {
               Quick Actions
             </Heading>
 
-            <VStack className="space-y-3">
+            <VStack space="md">
               <Card className="p-4">
-                <HStack className="items-center space-x-4">
+                <HStack space="lg" className="items-center">
                   <Box className="p-3 bg-green-100 dark:bg-green-900/30 rounded-full">
                     <Icon
                       as={Target}
@@ -77,13 +77,13 @@ const HomePage = () => {
                       className="text-green-600 dark:text-green-400"
                     />
                   </Box>
-                  <VStack className="flex-1">
+                  <VStack space="xs" className="flex-1">
                     <Text className="font-semibold text-typography-900 dark:text-typography-950">
                       Join Active Mission
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-300"
+                      className="text-typography-600 dark:text-typography-200"
                     >
                       Contribute to ongoing climate research
                     </Text>
@@ -95,7 +95,7 @@ const HomePage = () => {
               </Card>
 
               <Card className="p-4">
-                <HStack className="items-center space-x-4">
+                <HStack space="lg" className="items-center">
                   <Box className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
                     <Icon
                       as={Thermometer}
@@ -103,13 +103,13 @@ const HomePage = () => {
                       className="text-blue-600 dark:text-blue-400"
                     />
                   </Box>
-                  <VStack className="flex-1">
+                  <VStack space="xs" className="flex-1">
                     <Text className="font-semibold text-typography-900 dark:text-typography-950">
                       Report Climate Data
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-300"
+                      className="text-typography-600 dark:text-typography-200"
                     >
                       Share observations from your area
                     </Text>
@@ -121,7 +121,7 @@ const HomePage = () => {
               </Card>
 
               <Card className="p-4">
-                <HStack className="items-center space-x-4">
+                <HStack space="lg" className="items-center">
                   <Box className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full">
                     <Icon
                       as={Users}
@@ -129,13 +129,13 @@ const HomePage = () => {
                       className="text-purple-600 dark:text-purple-400"
                     />
                   </Box>
-                  <VStack className="flex-1">
+                  <VStack space="xs" className="flex-1">
                     <Text className="font-semibold text-typography-900 dark:text-typography-950">
                       Connect with Community
                     </Text>
                     <Text
                       size="sm"
-                      className="text-typography-600 dark:text-typography-300"
+                      className="text-typography-600 dark:text-typography-200"
                     >
                       Engage with fellow climate advocates
                     </Text>
@@ -149,7 +149,7 @@ const HomePage = () => {
           </VStack>
 
           {/* Recent Activity */}
-          <VStack className="space-y-4">
+          <VStack space="lg">
             <Heading
               size="md"
               className="text-typography-900 dark:text-typography-950"
@@ -158,13 +158,13 @@ const HomePage = () => {
             </Heading>
 
             <Card className="p-4">
-              <VStack className="space-y-3">
+              <VStack space="md">
                 <Text className="font-semibold text-typography-900 dark:text-typography-950">
                   Temperature monitoring mission completed
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   You contributed to collecting 15 temperature readings this
                   week
@@ -179,13 +179,13 @@ const HomePage = () => {
             </Card>
 
             <Card className="p-4">
-              <VStack className="space-y-3">
+              <VStack space="md">
                 <Text className="font-semibold text-typography-900 dark:text-typography-950">
                   New community discussion started
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   "Sustainable farming practices in drought conditions"
                 </Text>

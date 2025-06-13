@@ -71,10 +71,10 @@ const MissionsPage = () => {
       <ScrollView className="flex-1">
         <Box className="p-6">
           {/* Header */}
-          <VStack className="space-y-4 mb-8">
-            <HStack className="items-center space-x-3">
+          <VStack space="lg" className="mb-8">
+            <HStack space="lg" className="items-center">
               <Icon as={Target} size="xl" className="text-primary-500" />
-              <VStack>
+              <VStack space="sm">
                 <Heading
                   size="xl"
                   className="text-typography-900 dark:text-typography-950"
@@ -83,7 +83,7 @@ const MissionsPage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   Contribute to climate research and action
                 </Text>

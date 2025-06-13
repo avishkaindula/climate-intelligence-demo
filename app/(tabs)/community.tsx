@@ -90,10 +90,10 @@ const CommunityPage = () => {
       <ScrollView className="flex-1">
         <Box className="p-6">
           {/* Header */}
-          <VStack className="space-y-4 mb-8">
-            <HStack className="items-center space-x-3">
+          <VStack space="lg" className="mb-8">
+            <HStack space="md" className="items-center">
               <Icon as={Users} size="xl" className="text-primary-500" />
-              <VStack>
+              <VStack space="xs">
                 <Heading
                   size="xl"
                   className="text-typography-900 dark:text-typography-950"
@@ -102,7 +102,7 @@ const CommunityPage = () => {
                 </Heading>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   Connect, learn, and act together
                 </Text>
@@ -122,7 +122,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   Members
                 </Text>
@@ -136,7 +136,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   {t("discussions")}
                 </Text>
@@ -150,7 +150,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   {t("events")}
                 </Text>
@@ -159,7 +159,7 @@ const CommunityPage = () => {
           </Card>
 
           {/* Quick Actions */}
-          <HStack className="space-x-3 mb-6">
+          <HStack space="md" className="mb-6">
             <Button variant="solid" className="flex-1">
               <Icon as={MessageCircle} size="sm" className="text-white mr-2" />
               <Text className="text-white">Start Discussion</Text>
@@ -196,7 +196,7 @@ const CommunityPage = () => {
                     <VStack className="flex-1">
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-300"
+                        className="text-typography-600 dark:text-typography-200"
                       >
                         {discussion.author}
                       </Text>
@@ -227,7 +227,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-300"
+                          className="text-typography-600 dark:text-typography-200"
                         >
                           {discussion.replies}
                         </Text>
@@ -240,7 +240,7 @@ const CommunityPage = () => {
                         />
                         <Text
                           size="sm"
-                          className="text-typography-600 dark:text-typography-300"
+                          className="text-typography-600 dark:text-typography-200"
                         >
                           {discussion.likes}
                         </Text>
@@ -274,7 +274,7 @@ const CommunityPage = () => {
                       </Text>
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-300"
+                        className="text-typography-600 dark:text-typography-200"
                       >
                         {event.date} at {event.time}
                       </Text>
@@ -296,7 +296,7 @@ const CommunityPage = () => {
                       />
                       <Text
                         size="sm"
-                        className="text-typography-600 dark:text-typography-300"
+                        className="text-typography-600 dark:text-typography-200"
                       >
                         {event.participants} attending
                       </Text>
@@ -332,7 +332,7 @@ const CommunityPage = () => {
                 </Text>
                 <Text
                   size="sm"
-                  className="text-typography-600 dark:text-typography-300"
+                  className="text-typography-600 dark:text-typography-200"
                 >
                   Learn how residents of Vila Verde implemented an early warning
                   system and natural flood management...
