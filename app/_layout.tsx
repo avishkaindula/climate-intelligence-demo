@@ -23,6 +23,7 @@ import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { Home, Target, Map, Users, User } from "lucide-react-native";
 
 import "../global.css";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export {
   // Catch any errors thrown by the Layout component.
