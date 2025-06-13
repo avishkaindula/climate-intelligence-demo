@@ -50,6 +50,37 @@ const translations = {
     achievements: 'Achievements',
     editProfile: 'Edit Profile',
     
+    // Leagues and Progress
+    league: 'League',
+    currentLeague: 'Current League',
+    bronzeLeague: 'Bronze League',
+    silverLeague: 'Silver League',
+    goldLeague: 'Gold League',
+    platinumLeague: 'Platinum League',
+    diamondLeague: 'Diamond League',
+    pointsToNext: 'points to next league',
+    points: 'points',
+    
+    // Featured Missions
+    featuredMissions: 'Featured Missions',
+    viewAllMissions: 'View all missions >',
+    event: 'Event',
+    task: 'Task',
+    beginner: 'Beginner',
+    intermediate: 'Intermediate',
+    advanced: 'Advanced',
+    expert: 'Expert',
+    
+    // Campaigns
+    campaigns: 'Campaigns',
+    viewAllCampaigns: 'View all campaigns >',
+    joinCampaign: 'Join Campaign',
+    
+    // Rewards
+    redeemPoints: 'Redeem Your Points',
+    viewAllOffers: 'View all offers >',
+    discount: 'discount',
+    
     // Settings
     language: 'Language',
     theme: 'Theme',
@@ -105,6 +136,37 @@ const translations = {
     achievements: 'Logros',
     editProfile: 'Editar Perfil',
     
+    // Leagues and Progress
+    league: 'Liga',
+    currentLeague: 'Liga Actual',
+    bronzeLeague: 'Liga de Bronce',
+    silverLeague: 'Liga de Plata',
+    goldLeague: 'Liga de Oro',
+    platinumLeague: 'Liga de Platino',
+    diamondLeague: 'Liga de Diamante',
+    pointsToNext: 'puntos para la siguiente liga',
+    points: 'puntos',
+    
+    // Featured Missions
+    featuredMissions: 'Misiones Destacadas',
+    viewAllMissions: 'Ver todas las misiones >',
+    event: 'Evento',
+    task: 'Tarea',
+    beginner: 'Principiante',
+    intermediate: 'Intermedio',
+    advanced: 'Avanzado',
+    expert: 'Experto',
+    
+    // Campaigns
+    campaigns: 'Campañas',
+    viewAllCampaigns: 'Ver todas las campañas >',
+    joinCampaign: 'Unirse a Campaña',
+    
+    // Rewards
+    redeemPoints: 'Canjea tus Puntos',
+    viewAllOffers: 'Ver todas las ofertas >',
+    discount: 'descuento',
+    
     // Settings
     language: 'Idioma',
     theme: 'Tema',
@@ -159,6 +221,37 @@ const translations = {
     contributions: 'Contribuições',
     achievements: 'Conquistas',
     editProfile: 'Editar Perfil',
+    
+    // Leagues and Progress
+    league: 'Liga',
+    currentLeague: 'Liga Atual',
+    bronzeLeague: 'Liga de Bronze',
+    silverLeague: 'Liga de Prata',
+    goldLeague: 'Liga de Ouro',
+    platinumLeague: 'Liga de Platina',
+    diamondLeague: 'Liga de Diamante',
+    pointsToNext: 'pontos para a próxima liga',
+    points: 'pontos',
+    
+    // Featured Missions
+    featuredMissions: 'Missões em Destaque',
+    viewAllMissions: 'Ver todas as missões >',
+    event: 'Evento',
+    task: 'Tarefa',
+    beginner: 'Iniciante',
+    intermediate: 'Intermediário',
+    advanced: 'Avançado',
+    expert: 'Especialista',
+    
+    // Campaigns
+    campaigns: 'Campanhas',
+    viewAllCampaigns: 'Ver todas as campanhas >',
+    joinCampaign: 'Participar da Campanha',
+    
+    // Rewards
+    redeemPoints: 'Resgate seus Pontos',
+    viewAllOffers: 'Ver todas as ofertas >',
+    discount: 'desconto',
     
     // Settings
     language: 'Idioma',
