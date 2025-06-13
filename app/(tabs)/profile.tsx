@@ -28,6 +28,7 @@ import {
   Bell,
   Shield,
 } from "lucide-react-native";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const ProfilePage = () => {
   const { t, currentLanguage } = useLanguage();
@@ -83,7 +84,7 @@ const ProfilePage = () => {
   return (
     <SafeAreaView
       style={{ flex: 1 }}
-      className="bg-white dark:bg-background-950"
+      className="bg-white dark:bg-background-dark"
     >
       <ScrollView className="flex-1">
         <Box className="p-6">
@@ -306,6 +307,22 @@ const ProfilePage = () => {
                 {t("settings")}
               </Heading>
               <VStack className="space-y-3">
+                <VStack className="space-y-3">
+                  <HStack className="items-center space-x-3">
+                    <Icon
+                      as={Settings}
+                      size="md"
+                      className="text-typography-500"
+                    />
+                    <Text className="text-typography-900 dark:text-typography-100">
+                      Theme
+                    </Text>
+                  </HStack>
+                  <ThemeToggleButton />
+                </VStack>
+
+                <Divider className="my-2" />
+
                 <HStack className="justify-between items-center">
                   <HStack className="items-center space-x-3">
                     <Icon

@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <SafeAreaView
       style={{ flex: 1 }}
-      className="bg-white dark:bg-background-950"
+      className="bg-white dark:bg-background-dark"
     >
       <ScrollView className="flex-1">
         <Box className="p-6">
