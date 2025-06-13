@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Divider } from "@/components/ui/divider";
 import { useLanguage } from "@/components/i18n/LanguageContext";
 import LanguageSettings from "@/components/settings/LanguageSettings";
+import { useColorScheme } from "nativewind";
 import {
   User,
   Award,
@@ -27,11 +28,14 @@ import {
   Globe,
   Bell,
   Shield,
+  Moon,
+  Sun,
 } from "lucide-react-native";
 
 const ProfilePage = () => {
   const { t, currentLanguage } = useLanguage();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const { colorScheme, toggleColorScheme } = useColorScheme();
 
   const getCurrentLanguageName = () => {
     const languageNames = {
@@ -317,6 +321,25 @@ const ProfilePage = () => {
                       Theme
                     </Text>
                   </HStack>
+                  <Button
+                    variant="outline"
+                    onPress={toggleColorScheme}
+                    className="w-full"
+                  >
+                    <HStack className="items-center space-x-2">
+                      <Icon
+                        as={colorScheme === "dark" ? Sun : Moon}
+                        size="sm"
+                        className="text-typography-600 dark:text-typography-400"
+                      />
+                      <Text
+                        size="sm"
+                        className="text-typography-600 dark:text-typography-400"
+                      >
+                        {colorScheme === "dark" ? "Light Mode" : "Dark Mode"}
+                      </Text>
+                    </HStack>
+                  </Button>
                 </VStack>
 
                 <Divider className="my-2" />
