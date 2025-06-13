@@ -1,6 +1,5 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { Home, Target, Map, Users, User } from "lucide-react-native";
 
 function TabBarIcon({
