@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { StatusBar, Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Box } from "./ui/box";
 import MobileBottomTabs from "./MobileBottomTabs";
 import MobileModeChangeButton from "./MobileModeChangeButton";
@@ -48,28 +49,26 @@ const HomestayPage = () => {
   const [activeTab, setActiveTab] = React.useState("Home");
 
   return (
-    <>
-      <Box className="flex-1 bg-white dark:bg-background-dark">
-        <StatusBar />
+    <SafeAreaView style={{ flex: 1 }} className="bg-white dark:bg-background-dark">
+      <StatusBar />
+      
+      <Box className="flex-1">
+        <MobileProfilePage isActive={activeTab === "Profile"} />
 
-        <Box className="flex-1">
-          <MobileProfilePage isActive={activeTab === "Profile"} />
+        <Explorepage setActiveTab={setActiveTab} activeTab={activeTab} />
 
-          <Explorepage setActiveTab={setActiveTab} activeTab={activeTab} />
-
-          <MobileModeChangeButton />
-        </Box>
-        {/* mobile bottom tabs */}
-        <Box className="h-[72px] items-center w-full md:hidden border-t border-outline-50 dark:border-outline-900">
-          <MobileBottomTabs
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            bottomTabs={bottomTabs}
-          />
-        </Box>
+        <MobileModeChangeButton />
       </Box>
-      {/* )} */}
-    </>
+      
+      {/* mobile bottom tabs */}
+      <Box className="h-[72px] items-center w-full md:hidden border-t border-outline-50 dark:border-outline-900">
+        <MobileBottomTabs
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          bottomTabs={bottomTabs}
+        />
+      </Box>
+    </SafeAreaView>
   );
 };
 export default HomestayPage;
