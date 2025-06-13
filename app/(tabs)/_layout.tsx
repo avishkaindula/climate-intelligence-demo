@@ -1,6 +1,11 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Home, Target, Map, Users, User } from "lucide-react-native";
+import { Platform } from "react-native";
+
+import { HapticTab } from "@/components/HapticTab";
+import { Colors } from "@/constants/Colors";
+import TabBarBackground from "@/components/TabBarBackground";
 
 function TabBarIcon({
   IconComponent,
@@ -16,13 +21,18 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarActiveTintColor: "#059669", // green-600
         tabBarInactiveTintColor: "#6b7280", // gray-500
-        tabBarStyle: {
-          backgroundColor: "#ffffff",
-          borderTopColor: "#e5e7eb",
-        },
+        headerShown: false,
+        tabBarButton: HapticTab,
+        tabBarBackground: TabBarBackground,
+        tabBarStyle: Platform.select({
+          ios: {
+            // Use a transparent background on iOS to show the blur effect
+            position: "absolute",
+          },
+          default: {},
+        }),
       }}
     >
       <Tabs.Screen
