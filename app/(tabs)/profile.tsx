@@ -28,7 +28,6 @@ import {
   Bell,
   Shield,
 } from "lucide-react-native";
-import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 const ProfilePage = () => {
   const { t, currentLanguage } = useLanguage();
@@ -318,7 +317,6 @@ const ProfilePage = () => {
                       Theme
                     </Text>
                   </HStack>
-                  <ThemeToggleButton />
                 </VStack>
 
                 <Divider className="my-2" />
