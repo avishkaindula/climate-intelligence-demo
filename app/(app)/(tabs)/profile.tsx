@@ -8,11 +8,7 @@ import { HStack } from "@/components/ui/hstack";
 import { Icon } from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallbackText,
-} from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Divider } from "@/components/ui/divider";
 import { useLanguage } from "@/components/i18n/LanguageContext";

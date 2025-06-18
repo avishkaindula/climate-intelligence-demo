@@ -10,20 +10,13 @@ import { Icon } from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Image } from "@/components/ui/image";
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallbackText,
-} from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/components/i18n/LanguageContext";
 import {
   Users,
   MessageCircle,
   Calendar,
-  BookOpen,
-  Heart,
-  TrendingUp,
   MapPin,
   Star,
   UserPlus,

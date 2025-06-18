@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, FlatList, Image } from "react-native";
+import { ScrollView, Image } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading";
@@ -11,22 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/components/i18n/LanguageContext";
-import {
-  Globe,
-  Thermometer,
-  Users,
-  Target,
-  Trophy,
-  Calendar,
-  MapPin,
-  Leaf,
-  Droplets,
-  Wind,
-  Sun,
-  Gift,
-  Star,
-  ArrowRight,
-} from "lucide-react-native";
+import { Globe, Thermometer, Users, Trophy, Leaf } from "lucide-react-native";
 
 const HomePage = () => {
   const { t } = useLanguage();
