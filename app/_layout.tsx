@@ -14,6 +14,7 @@ import {
 import { LanguageProvider } from "@/components/i18n/LanguageContext";
 
 import "../global.css";
+import { SessionProvider, useSession } from "@/ctx";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,17 +46,29 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  return <RootLayoutNav />;
+  return (
+    <SessionProvider>
+      <LanguageProvider>
+        <GluestackUIProvider>
+          <RootLayoutNav />
+        </GluestackUIProvider>
+      </LanguageProvider>
+    </SessionProvider>
+  );
 }
 
 function RootLayoutNav() {
+  const { session } = useSession();
+
   return (
-    <LanguageProvider>
-      <GluestackUIProvider>
-        <Stack>
-          <Stack.Screen name="(app)" options={{ headerShown: false }} />
-        </Stack>
-      </GluestackUIProvider>
-    </LanguageProvider>
+    <Stack>
+      <Stack.Protected guard={!!session}>
+        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+      </Stack.Protected>
+
+      <Stack.Protected guard={!session}>
+        <Stack.Screen name="sign-in" />
+      </Stack.Protected>
+    </Stack>
   );
 }
