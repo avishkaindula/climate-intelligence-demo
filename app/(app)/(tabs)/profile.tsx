@@ -14,6 +14,7 @@ import { Divider } from "@/components/ui/divider";
 import { useLanguage } from "@/components/i18n/LanguageContext";
 import LanguageSettings from "@/components/settings/LanguageSettings";
 import { useColorScheme } from "nativewind";
+import { useSession } from "@/ctx";
 import {
   User,
   Award,
@@ -25,12 +26,14 @@ import {
   Shield,
   Moon,
   Sun,
+  LogOut,
 } from "lucide-react-native";
 
 const ProfilePage = () => {
   const { t, currentLanguage } = useLanguage();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { signOut } = useSession();
 
   const getCurrentLanguageName = () => {
     const languageNames = {
@@ -146,6 +149,21 @@ const ProfilePage = () => {
               </HStack>
               <Button variant="outline">
                 <Text>{t("editProfile")}</Text>
+              </Button>
+              <Button 
+                variant="solid" 
+                action="negative" 
+                onPress={signOut}
+                className="w-full"
+              >
+                <HStack space="xs" className="items-center">
+                  <Icon
+                    as={LogOut}
+                    size="sm"
+                    className="text-white"
+                  />
+                  <Text className="text-white">Sign Out</Text>
+                </HStack>
               </Button>
             </VStack>
           </Card>
