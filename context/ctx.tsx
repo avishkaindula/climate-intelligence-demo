@@ -1,11 +1,20 @@
 import { use, createContext, type PropsWithChildren, useEffect, useState } from "react";
 import { Session } from '@supabase/supabase-js';
 import { supabase } from "@/lib/supabase";
+import { makeRedirectUri } from "expo-auth-session";
+import * as QueryParams from "expo-auth-session/build/QueryParams";
+import * as WebBrowser from "expo-web-browser";
+import * as Linking from "expo-linking";
+
+// Required for web only
+WebBrowser.maybeCompleteAuthSession();
 
 const AuthContext = createContext<{
   signIn: (email: string, password: string) => Promise<{ error?: any }>;
   signOut: () => Promise<void>;
   signUp: (email: string, password: string) => Promise<{ error?: any; session?: Session | null }>;
+  signInWithGitHub: () => Promise<{ error?: any }>;
+  sendMagicLink: (email: string) => Promise<{ error?: any }>;
   resetPassword: (email: string) => Promise<{ error?: any }>;
   session: Session | null;
   user: Session['user'] | null;
@@ -14,6 +23,8 @@ const AuthContext = createContext<{
   signIn: async () => ({ error: null }),
   signOut: async () => {},
   signUp: async () => ({ error: null }),
+  signInWithGitHub: async () => ({ error: null }),
+  sendMagicLink: async () => ({ error: null }),
   resetPassword: async () => ({ error: null }),
   session: null,
   user: null,
@@ -34,6 +45,33 @@ export function SessionProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const redirectTo = makeRedirectUri();
+
+  // Create session from URL for deep linking
+  const createSessionFromUrl = async (url: string) => {
+    try {
+      const { params, errorCode } = QueryParams.getQueryParams(url);
+      
+      if (errorCode) throw new Error(errorCode);
+      
+      const { access_token, refresh_token } = params;
+      
+      if (!access_token) return;
+      
+      const { data, error } = await supabase.auth.setSession({
+        access_token,
+        refresh_token,
+      });
+      
+      if (error) throw error;
+      
+      return data.session;
+    } catch (error) {
+      console.error('Error creating session from URL:', error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -49,6 +87,14 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Handle linking into app from email/OAuth
+  const url = Linking.useURL();
+  useEffect(() => {
+    if (url) {
+      createSessionFromUrl(url).catch(console.error);
+    }
+  }, [url]);
 
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -66,8 +112,50 @@ export function SessionProvider({ children }: PropsWithChildren) {
     const { data: { session }, error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: redirectTo,
+      },
     });
     return { error, session };
+  };
+
+  const signInWithGitHub = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "github",
+        options: {
+          redirectTo,
+          skipBrowserRedirect: true,
+        },
+      });
+      
+      if (error) throw error;
+      
+      const res = await WebBrowser.openAuthSessionAsync(
+        data?.url ?? "",
+        redirectTo
+      );
+      
+      if (res.type === "success") {
+        const { url } = res;
+        await createSessionFromUrl(url);
+        return { error: null };
+      }
+      
+      return { error: new Error("OAuth cancelled") };
+    } catch (error) {
+      return { error };
+    }
+  };
+
+  const sendMagicLink = async (email: string) => {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: redirectTo,
+      },
+    });
+    return { error };
   };
 
   const resetPassword = async (email: string) => {
@@ -83,6 +171,8 @@ export function SessionProvider({ children }: PropsWithChildren) {
         signIn,
         signOut,
         signUp,
+        signInWithGitHub,
+        sendMagicLink,
         resetPassword,
         session,
         user: session?.user || null,

@@ -46,16 +46,16 @@ export default function ForgotPassword() {
           {/* Back Button */}
           <HStack className="items-center mb-6">
             <Button
-              variant="outline"
+              variant="link"
               size="sm"
               onPress={() => router.back()}
-              className="mr-4"
+              className="p-2 -ml-2"
             >
-              <Icon as={ArrowLeft} size="sm" className="text-typography-600" />
+              <Icon as={ArrowLeft} size="md" className="text-typography-600" />
             </Button>
             <Text
               size="lg"
-              className="text-typography-900 dark:text-typography-950 font-semibold"
+              className="text-typography-900 dark:text-typography-950 font-semibold ml-2"
             >
               Password Reset
             </Text>
@@ -157,16 +157,16 @@ export default function ForgotPassword() {
         {/* Back Button */}
         <HStack className="items-center mb-6">
           <Button
-            variant="outline"
+            variant="link"
             size="sm"
             onPress={() => router.back()}
-            className="mr-4"
+            className="p-2 -ml-2"
           >
-            <Icon as={ArrowLeft} size="sm" className="text-typography-600" />
+            <Icon as={ArrowLeft} size="md" className="text-typography-600" />
           </Button>
           <Text
             size="lg"
-            className="text-typography-900 dark:text-typography-950 font-semibold"
+            className="text-typography-900 dark:text-typography-950 font-semibold ml-2"
           >
             Reset Password
           </Text>

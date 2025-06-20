@@ -39,14 +39,18 @@ export default function SignUp() {
 
     if (error) {
       Alert.alert("Sign Up Error", error.message);
-    } else if (!session) {
+    } else {
+      // Always show email verification message since session won't be created until confirmed
       Alert.alert(
         "Check Your Email",
-        "Please check your inbox for email verification!"
+        "We've sent you a confirmation email. Please click the link in your email to activate your account.",
+        [
+          {
+            text: "OK",
+            onPress: () => router.push("/sign-in"),
+          },
+        ]
       );
-    } else {
-      // Navigation is handled by the Stack.Protected guard
-      // No need to manually navigate
     }
     setLoading(false);
   }
@@ -60,16 +64,16 @@ export default function SignUp() {
         {/* Back Button */}
         <HStack className="items-center mb-6">
           <Button
-            variant="outline"
+            variant="link"
             size="sm"
             onPress={() => router.back()}
-            className="mr-4"
+            className="p-2 -ml-2"
           >
-            <Icon as={ArrowLeft} size="sm" className="text-typography-600" />
+            <Icon as={ArrowLeft} size="md" className="text-typography-600" />
           </Button>
           <Text
             size="lg"
-            className="text-typography-900 dark:text-typography-950 font-semibold"
+            className="text-typography-900 dark:text-typography-950 font-semibold ml-2"
           >
             Create Account
           </Text>

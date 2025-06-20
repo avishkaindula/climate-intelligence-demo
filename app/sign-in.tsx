@@ -10,7 +10,7 @@ import { Icon } from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input, InputField, InputIcon } from "@/components/ui/input";
-import { LogIn, Shield, Mail, Lock } from "lucide-react-native";
+import { LogIn, Shield, Mail, Lock, Github } from "lucide-react-native";
 import { useSession } from "@/context/ctx";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
@@ -29,7 +29,8 @@ export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const { signIn } = useSession()
+  const [githubLoading, setGithubLoading] = useState(false)
+  const { signIn, signInWithGitHub } = useSession()
 
   async function handleSignIn() {
     setLoading(true)
@@ -42,6 +43,16 @@ export default function SignIn() {
       // No need to manually navigate
     }
     setLoading(false)
+  }
+
+  async function handleGitHubSignIn() {
+    setGithubLoading(true)
+    const { error } = await signInWithGitHub()
+
+    if (error) {
+      Alert.alert('GitHub Sign In Error', error.message)
+    }
+    setGithubLoading(false)
   }
   
   return (
@@ -136,7 +147,7 @@ export default function SignIn() {
                 action="primary"
                 size="lg"
                 className="w-full"
-                disabled={loading}
+                disabled={loading || githubLoading}
                 onPress={handleSignIn}
               >
                 <HStack space="md" className="items-center">
@@ -147,6 +158,35 @@ export default function SignIn() {
                   />
                   <Text size="lg" className="text-white font-semibold">
                     {loading ? "Signing In..." : "Sign In"}
+                  </Text>
+                </HStack>
+              </Button>
+
+              {/* Divider */}
+              <HStack className="items-center w-full">
+                <Box className="flex-1 h-px bg-outline-300 dark:bg-outline-600" />
+                <Text size="sm" className="px-4 text-typography-500 dark:text-typography-400">
+                  or
+                </Text>
+                <Box className="flex-1 h-px bg-outline-300 dark:bg-outline-600" />
+              </HStack>
+
+              {/* GitHub OAuth Button */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+                disabled={loading || githubLoading}
+                onPress={handleGitHubSignIn}
+              >
+                <HStack space="md" className="items-center">
+                  <Icon
+                    as={Github}
+                    size="md"
+                    className="text-typography-600 dark:text-typography-400"
+                  />
+                  <Text size="lg" className="text-typography-600 dark:text-typography-400 font-semibold">
+                    {githubLoading ? "Connecting..." : "Continue with GitHub"}
                   </Text>
                 </HStack>
               </Button>
