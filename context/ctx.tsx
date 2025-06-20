@@ -8,6 +8,7 @@ const AuthContext = createContext<{
   signUp: (email: string, password: string) => Promise<{ error?: any; session?: Session | null }>;
   resetPassword: (email: string) => Promise<{ error?: any }>;
   session: Session | null;
+  user: Session['user'] | null;
   isLoading: boolean;
 }>({
   signIn: async () => ({ error: null }),
@@ -15,6 +16,7 @@ const AuthContext = createContext<{
   signUp: async () => ({ error: null }),
   resetPassword: async () => ({ error: null }),
   session: null,
+  user: null,
   isLoading: true,
 });
 
@@ -83,6 +85,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
         signUp,
         resetPassword,
         session,
+        user: session?.user || null,
         isLoading,
       }}
     >
