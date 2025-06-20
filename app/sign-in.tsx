@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { LogIn, Shield, Mail, Lock } from "lucide-react-native";
-import { supabase } from "@/lib/supabase";
+import { useSession } from "@/context/ctx";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -19,9 +19,9 @@ import { supabase } from "@/lib/supabase";
 // if the user's session is terminated. This should only be registered once.
 AppState.addEventListener('change', (state) => {
   if (state === 'active') {
-    supabase.auth.startAutoRefresh()
+    // Auto-refresh is now handled by the context
   } else {
-    supabase.auth.stopAutoRefresh()
+    // Auto-refresh is now handled by the context
   }
 })
 
@@ -29,19 +29,17 @@ export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const { signIn } = useSession()
 
-  async function signInWithEmail() {
+  async function handleSignIn() {
     setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    })
+    const { error } = await signIn(email, password)
 
     if (error) {
       Alert.alert('Sign In Error', error.message)
     } else {
-      // Navigate after successful sign in
-      router.replace("/");
+      // Navigation is handled by the Stack.Protected guard
+      // No need to manually navigate
     }
     setLoading(false)
   }
@@ -139,7 +137,7 @@ export default function SignIn() {
                 size="lg"
                 className="w-full"
                 disabled={loading}
-                onPress={signInWithEmail}
+                onPress={handleSignIn}
               >
                 <HStack space="md" className="items-center">
                   <Icon

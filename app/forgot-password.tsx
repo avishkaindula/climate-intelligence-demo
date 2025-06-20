@@ -11,23 +11,22 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { KeyRound, Mail, ArrowLeft, CheckCircle } from "lucide-react-native";
-import { supabase } from "@/lib/supabase";
+import { useSession } from "@/context/ctx";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
+  const { resetPassword } = useSession()
 
-  async function resetPassword() {
+  async function handleResetPassword() {
     if (!email) {
       Alert.alert('Email Required', 'Please enter your email address')
       return
     }
 
     setLoading(true)
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'your-actual-scheme://reset-password',
-    })
+    const { error } = await resetPassword(email)
 
     if (error) {
       Alert.alert('Reset Password Error', error.message)
@@ -241,7 +240,7 @@ export default function ForgotPassword() {
                   size="lg"
                   className="w-full"
                   disabled={loading}
-                  onPress={resetPassword}
+                  onPress={handleResetPassword}
                 >
                   <HStack space="md" className="items-center">
                     <Icon

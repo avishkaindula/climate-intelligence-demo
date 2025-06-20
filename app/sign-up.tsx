@@ -11,15 +11,16 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { UserPlus, Mail, Lock, ArrowLeft } from "lucide-react-native";
-import { supabase } from "@/lib/supabase";
+import { useSession } from "@/context/ctx";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { signUp } = useSession();
 
-  async function signUpWithEmail() {
+  async function handleSignUp() {
     if (password !== confirmPassword) {
       Alert.alert("Password Error", "Passwords do not match");
       return;
@@ -34,13 +35,7 @@ export default function SignUp() {
     }
 
     setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
+    const { error, session } = await signUp(email, password);
 
     if (error) {
       Alert.alert("Sign Up Error", error.message);
@@ -50,8 +45,8 @@ export default function SignUp() {
         "Please check your inbox for email verification!"
       );
     } else {
-      // Navigate after successful sign up
-      router.replace("/");
+      // Navigation is handled by the Stack.Protected guard
+      // No need to manually navigate
     }
     setLoading(false);
   }
@@ -188,7 +183,7 @@ export default function SignUp() {
                   size="lg"
                   className="w-full"
                   disabled={loading}
-                  onPress={signUpWithEmail}
+                  onPress={handleSignUp}
                 >
                   <HStack space="md" className="items-center">
                     <Icon as={UserPlus} size="md" className="text-white" />
