@@ -72,7 +72,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
   const resetPassword = async (email: string) => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'your-app://reset-password',
+      redirectTo: 'com.climateintelligencedemo://reset-password',
     });
     return { error };
   };
