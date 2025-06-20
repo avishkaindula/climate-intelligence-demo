@@ -13,7 +13,6 @@ import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { LogIn, Shield, Mail, Lock, Github } from "lucide-react-native";
 import { useSession } from "@/context/ctx";
-import Logo from "@/assets/Icons/Logo";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive

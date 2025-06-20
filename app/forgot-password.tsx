@@ -13,7 +13,6 @@ import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { KeyRound, Mail, ArrowLeft, CheckCircle } from "lucide-react-native";
 import { useSession } from "@/context/ctx";
-import Logo from "@/assets/Icons/Logo";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -46,11 +45,6 @@ export default function ForgotPassword() {
       >
         <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
           <Box className="flex-1 p-6">
-            {/* Logo */}
-            <Box className="items-center mt-4 mb-2">
-              <Logo />
-            </Box>
-
             {/* Back Button */}
             <HStack className="items-center mb-6">
               <Button

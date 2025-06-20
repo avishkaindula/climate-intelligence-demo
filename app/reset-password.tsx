@@ -13,7 +13,6 @@ import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { KeyRound, Lock, CheckCircle, AlertCircle } from "lucide-react-native";
 import { supabase } from "@/lib/supabase";
-import Logo from "@/assets/Icons/Logo";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -93,11 +92,6 @@ export default function ResetPassword() {
       >
         <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
           <Box className="flex-1 justify-center items-center p-6">
-            {/* Logo */}
-            <Box className="items-center mt-4 mb-6">
-              <Logo />
-            </Box>
-
             <VStack space="lg" className="items-center">
               <Icon as={KeyRound} size="xl" className="text-primary-500" />
               <Text className="text-typography-600 dark:text-typography-750">
@@ -155,11 +149,6 @@ export default function ResetPassword() {
     >
       <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
         <Box className="flex-1 justify-center p-6">
-          {/* Logo */}
-          <Box className="items-center mt-4 mb-6">
-            <Logo />
-          </Box>
-
           <VStack space="xl" className="items-center">
             {/* Header */}
             <VStack space="lg" className="items-center mb-8">

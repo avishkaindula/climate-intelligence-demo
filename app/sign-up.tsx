@@ -13,7 +13,6 @@ import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { UserPlus, Mail, Lock, ArrowLeft } from "lucide-react-native";
 import { useSession } from "@/context/ctx";
-import Logo from "@/assets/Icons/Logo";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
