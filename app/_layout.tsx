@@ -1,6 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Stack } from "expo-router";
@@ -14,15 +13,13 @@ import {
 import { LanguageProvider } from "@/components/i18n/LanguageContext";
 
 import "../global.css";
-import { SessionProvider, useSession } from "@/ctx";
+import { SessionProvider, useSession } from "@/context/ctx";
+import { SplashScreenController } from "@/components/splash";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -40,16 +37,11 @@ export default function RootLayout() {
     if (error) throw error;
   }, [error]);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
   return (
     <SessionProvider>
       <LanguageProvider>
         <GluestackUIProvider>
+          <SplashScreenController />
           <RootLayoutNav />
         </GluestackUIProvider>
       </LanguageProvider>

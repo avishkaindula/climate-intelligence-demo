@@ -1,6 +1,6 @@
 import { router } from "expo-router";
-import React from "react";
-import { SafeAreaView } from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView, Alert, AppState } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading";
@@ -9,12 +9,63 @@ import { HStack } from "@/components/ui/hstack";
 import { Icon } from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { LogIn, Shield } from "lucide-react-native";
+import { Input, InputField, InputIcon } from "@/components/ui/input";
+import { LogIn, Shield, Mail, Lock } from "lucide-react-native";
+import { supabase } from "@/lib/supabase";
 
-import { useSession } from "@/ctx";
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener('change', (state) => {
+  if (state === 'active') {
+    supabase.auth.startAutoRefresh()
+  } else {
+    supabase.auth.stopAutoRefresh()
+  }
+})
 
 export default function SignIn() {
-  const { signIn } = useSession();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function signInWithEmail() {
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+
+    if (error) {
+      Alert.alert('Sign In Error', error.message)
+    } else {
+      // Navigate after successful sign in
+      router.replace("/");
+    }
+    setLoading(false)
+  }
+
+  async function signUpWithEmail() {
+    setLoading(true)
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
+
+    if (error) {
+      Alert.alert('Sign Up Error', error.message)
+    } else if (!session) {
+      Alert.alert('Check Your Email', 'Please check your inbox for email verification!')
+    } else {
+      // Navigate after successful sign up
+      router.replace("/");
+    }
+    setLoading(false)
+  }
   
   return (
     <SafeAreaView
@@ -62,17 +113,54 @@ export default function SignIn() {
                 </Text>
               </VStack>
               
+              {/* Email Input */}
+              <VStack space="xs" className="w-full">
+                <Text
+                  size="sm"
+                  className="text-typography-600 dark:text-typography-750"
+                >
+                  Email
+                </Text>
+                <Input className="w-full">
+                  <InputIcon as={Mail} className="ml-3" />
+                  <InputField
+                    placeholder="email@address.com"
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                    keyboardType="email-address"
+                  />
+                </Input>
+              </VStack>
+
+              {/* Password Input */}
+              <VStack space="xs" className="w-full">
+                <Text
+                  size="sm"
+                  className="text-typography-600 dark:text-typography-750"
+                >
+                  Password
+                </Text>
+                <Input className="w-full">
+                  <InputIcon as={Lock} className="ml-3" />
+                  <InputField
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={true}
+                    autoCapitalize="none"
+                  />
+                </Input>
+              </VStack>
+              
+              {/* Sign In Button */}
               <Button
                 variant="solid"
                 action="primary"
                 size="lg"
                 className="w-full"
-                onPress={() => {
-                  signIn();
-                  // Navigate after signing in. You may want to tweak this to ensure sign-in is
-                  // successful before navigating.
-                  router.replace("/");
-                }}
+                disabled={loading}
+                onPress={signInWithEmail}
               >
                 <HStack space="md" className="items-center">
                   <Icon
@@ -81,9 +169,22 @@ export default function SignIn() {
                     className="text-white"
                   />
                   <Text size="lg" className="text-white font-semibold">
-                    Sign In
+                    {loading ? "Signing In..." : "Sign In"}
                   </Text>
                 </HStack>
+              </Button>
+
+              {/* Sign Up Button */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+                disabled={loading}
+                onPress={signUpWithEmail}
+              >
+                <Text size="lg" className="text-primary-500 font-semibold">
+                  {loading ? "Creating Account..." : "Create Account"}
+                </Text>
               </Button>
               
               <VStack space="xs" className="items-center">
