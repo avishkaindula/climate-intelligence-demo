@@ -5,6 +5,7 @@ import { makeRedirectUri } from "expo-auth-session";
 import * as QueryParams from "expo-auth-session/build/QueryParams";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
+import { Platform } from "react-native";
 
 // Required for web only
 WebBrowser.maybeCompleteAuthSession();
@@ -91,7 +92,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
   // Handle linking into app from email/OAuth
   const url = Linking.useURL();
   useEffect(() => {
-    if (url) {
+    if (url && Platform.OS !== 'web') {
       createSessionFromUrl(url).catch(console.error);
     }
   }, [url]);
@@ -121,28 +122,40 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
   const signInWithGitHub = async () => {
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "github",
-        options: {
-          redirectTo,
-          skipBrowserRedirect: true,
-        },
-      });
-      
-      if (error) throw error;
-      
-      const res = await WebBrowser.openAuthSessionAsync(
-        data?.url ?? "",
-        redirectTo
-      );
-      
-      if (res.type === "success") {
-        const { url } = res;
-        await createSessionFromUrl(url);
-        return { error: null };
+      if (Platform.OS === 'web') {
+        // For web, use standard OAuth flow
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "github",
+          options: {
+            redirectTo: window.location.origin,
+          },
+        });
+        return { error };
+      } else {
+        // For mobile, use deep linking flow
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "github",
+          options: {
+            redirectTo,
+            skipBrowserRedirect: true,
+          },
+        });
+        
+        if (error) throw error;
+        
+        const res = await WebBrowser.openAuthSessionAsync(
+          data?.url ?? "",
+          redirectTo
+        );
+        
+        if (res.type === "success") {
+          const { url } = res;
+          await createSessionFromUrl(url);
+          return { error: null };
+        }
+        
+        return { error: new Error("OAuth cancelled") };
       }
-      
-      return { error: new Error("OAuth cancelled") };
     } catch (error) {
       return { error };
     }
