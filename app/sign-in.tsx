@@ -45,27 +45,6 @@ export default function SignIn() {
     }
     setLoading(false)
   }
-
-  async function signUpWithEmail() {
-    setLoading(true)
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
-
-    if (error) {
-      Alert.alert('Sign Up Error', error.message)
-    } else if (!session) {
-      Alert.alert('Check Your Email', 'Please check your inbox for email verification!')
-    } else {
-      // Navigate after successful sign up
-      router.replace("/");
-    }
-    setLoading(false)
-  }
   
   return (
     <SafeAreaView
@@ -174,18 +153,35 @@ export default function SignIn() {
                 </HStack>
               </Button>
 
-              {/* Sign Up Button */}
+              {/* Forgot Password Link */}
               <Button
-                variant="outline"
-                size="lg"
-                className="w-full"
-                disabled={loading}
-                onPress={signUpWithEmail}
+                variant="link"
+                size="sm"
+                onPress={() => router.push("/forgot-password")}
               >
-                <Text size="lg" className="text-primary-500 font-semibold">
-                  {loading ? "Creating Account..." : "Create Account"}
+                <Text size="sm" className="text-primary-500 font-semibold">
+                  Forgot Password?
                 </Text>
               </Button>
+
+              {/* Sign Up Link */}
+              <VStack space="xs" className="items-center">
+                <Text
+                  size="sm"
+                  className="text-typography-600 dark:text-typography-750"
+                >
+                  Don't have an account?
+                </Text>
+                <Button
+                  variant="link"
+                  size="sm"
+                  onPress={() => router.push("/sign-up")}
+                >
+                  <Text size="sm" className="text-primary-500 font-semibold">
+                    Create Account
+                  </Text>
+                </Button>
+              </VStack>
               
               <VStack space="xs" className="items-center">
                 <Text
