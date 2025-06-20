@@ -14,7 +14,7 @@ import { LanguageProvider } from "@/components/i18n/LanguageContext";
 
 import "../global.css";
 import { SessionProvider, useSession } from "@/context/ctx";
-import { SplashScreenController } from "@/components/splash";
+import { SplashScreenController } from "@/components/SplashController";
 
 export {
   // Catch any errors thrown by the Layout component.
