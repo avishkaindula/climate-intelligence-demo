@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { SafeAreaView, Alert, AppState } from "react-native";
+import { SafeAreaView, Alert } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading";
@@ -13,18 +13,6 @@ import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { LogIn, Shield, Mail, Lock, Github } from "lucide-react-native";
 import { useSession } from "@/context/ctx";
-
-// Tells Supabase Auth to continuously refresh the session automatically if
-// the app is in the foreground. When this is added, you will continue to receive
-// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
-// if the user's session is terminated. This should only be registered once.
-AppState.addEventListener("change", (state) => {
-  if (state === "active") {
-    // Auto-refresh is now handled by the context
-  } else {
-    // Auto-refresh is now handled by the context
-  }
-});
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
