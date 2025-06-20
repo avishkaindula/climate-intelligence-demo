@@ -294,14 +294,19 @@ export default function ForgotPassword() {
                 <VStack space="xs">
                   <Text
                     size="sm"
+                    className="text-typography-600 dark:text-typography-750 text-center font-semibold"
+                  >
+                    Need help?
+                  </Text>
+                  <Text
+                    size="sm"
                     className="text-typography-600 dark:text-typography-750 text-center"
                   >
-                    <Text className="font-semibold">Need help?</Text> Contact
-                    our support team if you continue to experience issues with
-                    your account.
+                    Contact our support team if you continue to experience
+                    issues with your account.
                   </Text>
                 </VStack>
-              </VStack>{" "}
+              </VStack>
             </VStack>
           </Box>
         </Box>

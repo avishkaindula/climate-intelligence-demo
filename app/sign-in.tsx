@@ -261,7 +261,7 @@ export default function SignIn() {
                     Track your environmental impact and achievements
                   </Text>
                 </HStack>
-              </VStack>{" "}
+              </VStack>
             </VStack>
           </VStack>
         </Box>
