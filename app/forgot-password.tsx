@@ -184,7 +184,7 @@ export default function ForgotPassword() {
               size="lg"
               className="text-typography-900 dark:text-typography-950 font-semibold ml-2"
             >
-              Reset Password
+              Go Back
             </Text>
           </HStack>
 

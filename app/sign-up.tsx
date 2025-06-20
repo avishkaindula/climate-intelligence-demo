@@ -77,7 +77,7 @@ export default function SignUp() {
               size="lg"
               className="text-typography-900 dark:text-typography-950 font-semibold ml-2"
             >
-              Create Account
+              Go Back
             </Text>
           </HStack>
 
